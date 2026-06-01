@@ -10,7 +10,7 @@ The project strictly adheres to **Feature-Sliced Design (FSD)** architecture pri
 
 ## Live Demo
 
-- **Deployed App:** [Link to Vercel]
+- **Deployed App:** [Link to Vercel](https://music-pulse-dashboard.vercel.app)
 - **Design Core:** UI/UX concept inspired by [Figma Community](https://www.figma.com/community/file/1255801381916515982/music-1-music-dashboard)
 
 ---
