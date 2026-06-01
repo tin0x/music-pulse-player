@@ -1,0 +1,28 @@
+.card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &SubWrapper {
+    min-height: 70px;
+    background-color: var(--color-bg-blur);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  &SubTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: 10%;
+    user-select: none;
+  }
+}

@@ -1,0 +1,38 @@
+.avatar {
+  border-radius: var(--radius-circle);
+  border: 3px solid transparent;
+  flex-shrink: 0;
+  position: relative;
+
+  &Animation {
+    animation: rotate 8s linear infinite;
+  }
+
+  &Border {
+    border: 3px solid var(--color-accent);
+  }
+
+  &Image {
+    border-radius: var(--radius-circle);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &Circle {
+    border-radius: var(--radius-circle);
+    background-color: var(--color-accent);
+    padding: 1.5rem;
+    position: absolute;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

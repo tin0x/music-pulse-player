@@ -1,0 +1,13 @@
+.trackItem {
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+
+  &Active {
+    color: var(--color-accent);
+  }
+
+  &Avatar {
+    width: 60px;
+    height: 60px;
+  }
+}

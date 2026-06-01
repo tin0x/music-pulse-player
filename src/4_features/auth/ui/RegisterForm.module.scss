@@ -1,0 +1,100 @@
+.registerForm {
+  &Block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Title {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    font-weight: 700;
+    align-self: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+
+  &Label {
+    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary);
+    font-weight: 700;
+
+    &File {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      inset: 0;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &Input {
+    color: var(--color-text-primary);
+    padding: 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+
+    &:focus {
+      border-color: var(--color-accent);
+    }
+
+    &:last-child {
+      display: none;
+    }
+  }
+
+  &Info {
+    font-size: 1rem;
+    margin: 1rem 0;
+    color: var(--color-error);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+
+    &Active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &FileWrapper {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border: 1px solid var(--color-text-secondary);
+    border-radius: var(--radius-md);
+  }
+
+  &Preview {
+    border-radius: var(--radius-md);
+  }
+
+  &Button {
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+    background-image: var(--color-bg-gradient);
+    color: var(--color-text-primary);
+    padding: 1.2rem 0;
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(0.98);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .registerForm {
+    &FileWrapper {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}

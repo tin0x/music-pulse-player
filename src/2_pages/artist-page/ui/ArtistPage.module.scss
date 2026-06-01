@@ -1,0 +1,24 @@
+.artist {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &Wrapper {
+    flex: 1;
+    padding: 2.5rem 2rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .artist {
+    &Wrapper {
+      padding: 2.5rem 1rem;
+    }
+  }
+}

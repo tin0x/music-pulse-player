@@ -1,0 +1,11 @@
+.artistInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+
+  &PageSwitcher {
+    align-self: center;
+  }
+}

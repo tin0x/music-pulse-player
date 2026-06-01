@@ -1,0 +1,11 @@
+.duration {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: currentColor;
+}
+
+@media (max-width: 768px) {
+  .duration {
+    display: none;
+  }
+}

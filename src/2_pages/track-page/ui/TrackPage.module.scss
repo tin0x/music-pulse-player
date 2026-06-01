@@ -1,0 +1,21 @@
+.track {
+  flex: 1;
+
+  &Wrapper {
+    padding: 2.5rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .track {
+    &Wrapper {
+      padding: 2.5rem 1rem;
+    }
+  }
+}

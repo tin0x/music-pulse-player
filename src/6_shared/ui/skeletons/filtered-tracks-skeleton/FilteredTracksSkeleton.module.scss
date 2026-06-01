@@ -1,0 +1,17 @@
+.filteredTracksSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  &SortingSelect {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &PageSwitcher {
+    display: flex;
+    flex-direction: column;
+  }
+}

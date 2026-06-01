@@ -1,0 +1,13 @@
+.itemsContainer {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &Title {
+    color: var(--color-text-secondary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+  }
+}

@@ -1,0 +1,26 @@
+import React from 'react';
+import classes from '@pages/tracks-list-page/ui/TracksListPage.module.scss';
+import TopTracksWidget from '@widgets/top-tracks-widget/ui/TopTracksWidget.tsx';
+import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
+import { useInitTracksListPage } from '@pages/tracks-list-page/model/useInitTracksListPage.tsx';
+
+const TracksListPage: React.FC = () => {
+  useToggleTitle('Music Pulse | Top Music');
+  const { type, tracksLimitPerPage, t } = useInitTracksListPage();
+
+  return (
+    <section className="tracksList">
+      <div className={classes.trackListWrapper}>
+        {type === 'trending' && (
+          <TopTracksWidget
+            className={classes.tracksListTopTracksWidget}
+            subtitle={t.str.top50TopMusic}
+            tracksLimitPerPage={tracksLimitPerPage}
+          />
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default TracksListPage;

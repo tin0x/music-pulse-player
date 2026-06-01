@@ -1,0 +1,66 @@
+.topTracksSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &TopBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &Wrapper {
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.3rem;
+  }
+
+  &LeftBlock {
+    display: flex;
+    align-items: center;
+    gap: 2.6rem;
+  }
+
+  &RightBlock {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  &Info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &Description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .topTracksSkeleton {
+    .topTracksSkeletonHidden {
+      display: none;
+    }
+
+    &LeftBlock {
+      gap: 0;
+    }
+
+    &RightBlock {
+      gap: 0;
+    }
+  }
+}

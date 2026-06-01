@@ -1,0 +1,36 @@
+.trackList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &TopBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    overflow: hidden;
+  }
+
+  &Link {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    text-decoration: underline;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .trackList {
+    .trackListEqualizer {
+      display: none;
+    }
+  }
+}

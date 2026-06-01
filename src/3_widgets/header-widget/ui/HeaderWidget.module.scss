@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-aside);
+  grid-area: header;
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    padding: 2.5rem 2.1rem;
+  }
+}
+
+@media (max-width: 1600px) {
+  .header {
+    display: none;
+
+    &Active {
+      display: flex;
+    }
+  }
+}

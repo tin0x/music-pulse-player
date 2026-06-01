@@ -1,0 +1,38 @@
+.input {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-surface);
+  padding: 0.9rem 1.4rem 0.9rem 4rem;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &Wrapper {
+    padding: 0.9rem 1.4rem;
+    position: relative;
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+  }
+
+  &Icon {
+    width: 30px;
+    height: 30px;
+
+    &Animation {
+      animation: spin 2s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

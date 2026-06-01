@@ -1,0 +1,44 @@
+@use '@shared/styles/mixins.scss';
+
+.toggleLang {
+  &Wrapper {
+    display: flex;
+  }
+
+  &Label {
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+    color: var(--color-text-primary);
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: var(--color-bg-surface);
+
+    &Active {
+      background-image: var(--color-bg-gradient);
+    }
+
+    &:hover {
+      background-image: var(--color-bg-gradient);
+    }
+  }
+
+  &Input {
+    @include mixins.hiddenElement;
+  }
+
+  &LegendHidden {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .toggleLang {
+    &Wrapper {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.playerBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+
+  &Controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    &Adaptive {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  &Playback {
+    color: var(--color-text-primary);
+    width: var(--player-control-size);
+    height: var(--player-control-size);
+    padding: 4px;
+  }
+
+  &ExtraControls {
+    display: flex;
+    gap: 2rem;
+
+    &Dropdown {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.3rem;
+      top: -190px;
+      left: -15px;
+
+      &Wrapper {
+        position: relative;
+        display: none;
+      }
+
+      &Button {
+        display: flex;
+        justify-content: center;
+        width: var(--player-control-size);
+        height: var(--player-control-size);
+      }
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .playerBar {
+    &ExtraControls {
+      display: none;
+
+      &Dropdown {
+        &Wrapper {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .playerBar {
+    gap: 1rem;
+
+    &Controls {
+      display: none;
+
+      &Adaptive {
+        display: flex;
+      }
+    }
+  }
+}

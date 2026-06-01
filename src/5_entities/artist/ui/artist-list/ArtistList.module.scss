@@ -1,0 +1,54 @@
+//noinspection CssUnusedSymbol
+.artistList {
+  &Wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  &TopBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-primary);
+    font-weight: bold;
+  }
+
+  &Title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  &Quantity {
+    font-size: 1.6rem;
+  }
+
+  &List {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &Preview {
+    width: 200px;
+    height: 200px;
+  }
+
+  &Avatar {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  //noinspection CssUnusedSymbol
+  .artistList {
+    &TopBar {
+      flex-direction: column;
+    }
+  }
+}

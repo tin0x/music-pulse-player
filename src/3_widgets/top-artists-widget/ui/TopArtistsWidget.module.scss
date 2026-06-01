@@ -1,0 +1,8 @@
+//noinspection CssUnusedSymbol
+.topArtists {
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

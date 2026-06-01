@@ -1,0 +1,26 @@
+.favoriteSectionSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  &Artists {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &List {
+      display: flex;
+      gap: 1.5rem;
+      overflow: hidden;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .favoriteSectionSkeleton {
+    &ArtistAvatar {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+}

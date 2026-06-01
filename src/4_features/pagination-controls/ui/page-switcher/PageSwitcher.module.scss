@@ -1,0 +1,30 @@
+//noinspection CssUnusedSymbol
+.pageSwitcher {
+  &Block {
+    display: flex;
+  }
+
+  &Dots {
+    font-size: 1.2rem;
+    color: currentColor;
+    padding: 1.5rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  //noinspection CssUnusedSymbol
+  .pageSwitcher {
+    &Dots {
+      display: flex;
+      align-items: center;
+      padding: 1.2rem;
+    }
+
+    &Numbered {
+      display: flex;
+      align-items: center;
+      padding: 1.2rem;
+    }
+  }
+}

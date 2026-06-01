@@ -1,0 +1,14 @@
+//noinspection CssUnusedSymbol
+.trackList {
+  &Wrapper {
+    padding: 2.5rem 2rem;
+  }
+}
+@media (max-width: 768px) {
+  //noinspection CssUnusedSymbol
+  .trackList {
+    &Wrapper {
+      padding: 2.5rem 1rem;
+    }
+  }
+}

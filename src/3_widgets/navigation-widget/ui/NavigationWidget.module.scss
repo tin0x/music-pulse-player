@@ -1,0 +1,38 @@
+.navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+
+  &Nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  &Item {
+    padding: 0.9rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+
+    &Active {
+      color: var(--color-text-primary);
+      background-image: var(--color-bg-gradient);
+    }
+
+    &:hover {
+      color: var(--color-text-primary);
+      background-image: var(--color-bg-gradient);
+    }
+  }
+
+  &Icon {
+    width: 20px;
+    height: 20px;
+  }
+}

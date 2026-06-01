@@ -1,0 +1,92 @@
+.main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  &[data-offline='true'] {
+    --toast-height: 3rem;
+    --events-click: auto;
+  }
+
+  &[data-offline='false'] {
+    --events-click: none;
+  }
+
+  &TopBar {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.2rem 0 1.2rem;
+    margin-top: var(--toast-height);
+
+    &AuxiliaryUnit {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    &Controls {
+      gap: 1.5rem;
+    }
+  }
+
+  &Button {
+    color: var(--color-text-secondary);
+    width: 50px;
+    height: 50px;
+
+    &Active {
+      color: var(--color-accent);
+    }
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    &Aside {
+      display: none;
+    }
+  }
+
+  &ToastWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    pointer-events: var(--events-click);
+  }
+
+  &ScrollableContent {
+    flex: 1;
+    padding-top: var(--toast-height);
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 1600px) {
+  .main {
+    &TopBar {
+      display: flex;
+    }
+
+    &ScrollableContent {
+      --toast-height: 0;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .main {
+    &Button {
+      &Aside {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.messageItem {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Title {
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+    font-weight: bold;
+  }
+
+  &Text {
+    color: var(--color-text-secondary);
+  }
+}

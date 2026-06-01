@@ -1,0 +1,9 @@
+.filteredTracks {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  &PageSwitcher {
+    align-self: center;
+  }
+}

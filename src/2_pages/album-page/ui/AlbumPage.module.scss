@@ -1,0 +1,36 @@
+.album {
+  flex: 1;
+  color: var(--color-text-primary);
+
+  &Wrapper {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &TopBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  &Title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &Quantity {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 768px) {
+  .album {
+    &Wrapper {
+      padding: 2.5rem 1rem;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.buttonLoopList {
+  width: var(--player-control-size);
+  height: var(--player-control-size);
+  color: currentColor;
+
+  &Active {
+    color: var(--color-accent);
+  }
+}

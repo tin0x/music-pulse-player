@@ -1,0 +1,20 @@
+.favorite {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &Wrapper {
+    flex: 1;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorite {
+    &Wrapper {
+      padding: 1rem;
+    }
+  }
+}

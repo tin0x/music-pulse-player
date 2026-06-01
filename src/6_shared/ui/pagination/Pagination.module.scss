@@ -1,0 +1,10 @@
+.pagination {
+  width: max-content;
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+
+  &Wrapper {
+    display: flex;
+  }
+}

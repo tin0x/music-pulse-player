@@ -1,0 +1,10 @@
+.buttonRepeatTrack {
+  width: var(--player-control-size);
+  height: var(--player-control-size);
+  color: var(--color-text-primary);
+  padding: 3px;
+
+  &Active {
+    color: var(--color-accent);
+  }
+}

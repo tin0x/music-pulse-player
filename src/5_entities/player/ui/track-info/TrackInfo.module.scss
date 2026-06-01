@@ -1,0 +1,68 @@
+.trackInfo {
+  display: flex;
+  align-items: center;
+  gap: 2.3rem;
+  flex: 0 1 500px;
+  min-width: 0;
+  overflow: hidden;
+
+  &Avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  &Description {
+    overflow: hidden;
+    flex: 0 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--color-text-primary);
+  }
+
+  &Title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    &:hover {
+      width: max-content;
+      animation: marquee 8s linear infinite;
+      animation-delay: 1s;
+    }
+  }
+
+  &Subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: 700;
+    white-space: nowrap;
+
+    &:hover {
+      width: max-content;
+      animation: marquee 8s linear infinite;
+      animation-delay: 1s;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 1200px) {
+  .trackInfo {
+    display: none;
+  }
+}

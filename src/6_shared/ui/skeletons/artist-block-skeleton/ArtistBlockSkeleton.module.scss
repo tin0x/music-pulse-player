@@ -1,0 +1,25 @@
+.artistBlockSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &Wrapper {
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.3rem;
+  }
+
+  &Info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &Description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}

@@ -1,0 +1,14 @@
+.numberedSwitch {
+  font-size: 1.2rem;
+  color: currentColor;
+  padding: 1.5rem;
+  font-weight: 700;
+
+  &:hover {
+    background-image: var(--color-bg-gradient);
+  }
+
+  &Active {
+    background-image: var(--color-bg-gradient);
+  }
+}

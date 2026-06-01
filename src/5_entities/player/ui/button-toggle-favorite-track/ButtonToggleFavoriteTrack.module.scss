@@ -1,0 +1,9 @@
+.buttonToggleFavoriteTrack {
+  width: var(--player-control-size);
+  height: var(--player-control-size);
+  color: var(--color-text-primary);
+
+  &Active {
+    color: var(--color-accent);
+  }
+}

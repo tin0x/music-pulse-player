@@ -1,0 +1,48 @@
+.artistSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &Viewport {
+    overflow: hidden;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &Container {
+    display: flex;
+    gap: 1.5rem;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  &Item {
+    flex: 0 0 300px;
+    min-width: 0;
+  }
+
+  &Slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  &Avatar {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .artistSlider {
+    &Item {
+      flex: 0 0 150px;
+    }
+
+    &Avatar {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}

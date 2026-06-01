@@ -1,0 +1,58 @@
+@use '@shared/styles/mixins.scss';
+
+.sortingSelect {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
+
+  &Block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    border: 1px solid var(--color-text-secondary);
+    padding: 1.8rem;
+  }
+
+  &Title {
+    color: var(--color-text-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  &BlockRadio {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &Label {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-circle);
+    border: 2px solid var(--color-text-primary);
+
+    &Active {
+      background-image: var(--color-bg-gradient);
+    }
+  }
+
+  &Radio {
+    @include mixins.hiddenElement;
+  }
+
+  &Text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sortingSelect {
+    &Block {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<svg viewBox="0 0 24.2857 24.2857" xmlns="http://www.w3.org/2000/svg" width="24.285706" height="24.285713" fill="none">
+	<defs>
+		<linearGradient id="paint_linear_0" x1="3.76548553" x2="11.2503633" y1="11.417572" y2="11.6470613" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(181,23,158)" offset="0" stop-opacity="1" />
+			<stop stop-color="rgb(114,9,183)" offset="1" stop-opacity="1" />
+		</linearGradient>
+		<linearGradient id="paint_linear_1" x1="14.0512218" x2="21.5360985" y1="11.417572" y2="11.6470613" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(181,23,158)" offset="0" stop-opacity="1" />
+			<stop stop-color="rgb(114,9,183)" offset="1" stop-opacity="1" />
+		</linearGradient>
+		<linearGradient id="paint_linear_2" x1="-1.87331486" x2="30.338932" y1="-1.37362671" y2="1.47955418" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(181,23,158)" offset="0" stop-opacity="1" />
+			<stop stop-color="rgb(114,9,183)" offset="1" stop-opacity="1" />
+		</linearGradient>
+	</defs>
+	<g id="Group">
+		<path id="Vector" d="M7.85713 13C8.8039 13 9.57141 13.7675 9.57141 14.7143L9.57141 21.5714C9.57141 22.5182 8.8039 23.2857 7.85713 23.2857L6.14284 23.2857C5.19607 23.2857 4.42856 22.5182 4.42856 21.5714L4.42856 14.7143C4.42856 13.7675 5.19607 13 6.14284 13L7.85713 13Z" stroke="url(#paint_linear_0)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.000000" />
+		<path id="Vector" d="M18.1429 13C19.0896 13 19.8572 13.7675 19.8572 14.7143L19.8572 21.5714C19.8572 22.5182 19.0896 23.2857 18.1429 23.2857L16.4286 23.2857C15.4818 23.2857 14.7143 22.5182 14.7143 21.5714L14.7143 14.7143C14.7143 13.7675 15.4818 13 16.4286 13L18.1429 13Z" stroke="url(#paint_linear_1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.000000" />
+		<path id="Vector" d="M1 16.4286L1 12.1429C1 9.18759 2.17398 6.35336 4.26367 4.26367C6.35336 2.17398 9.18759 1 12.1429 1C15.0981 1 17.9324 2.17398 20.022 4.26367C22.1117 6.35336 23.2857 9.18759 23.2857 12.1429L23.2857 16.4286" fill-rule="nonzero" stroke="url(#paint_linear_2)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.000000" />
+	</g>
+</svg>

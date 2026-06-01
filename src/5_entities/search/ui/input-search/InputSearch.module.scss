@@ -1,0 +1,34 @@
+.inputSearch {
+  position: relative;
+  width: 100%;
+
+  &Dropdown {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  &Link {
+    color: var(--color-text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+
+    &:hover {
+      background-image: var(--color-bg-gradient);
+    }
+
+    &Name {
+      font-size: 1.2rem;
+    }
+
+    &Label {
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.6rem;
+      border: 1px solid currentColor;
+      border-radius: var(--radius-sm);
+    }
+  }
+}
