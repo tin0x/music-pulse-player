@@ -65,13 +65,13 @@ The directory hierarchy follows exact FSD slice abstractions ensuring bulletproo
 1. Clone the project locally:
 
 ```bash
-git clone [https://github.com/your-username/music-pulse.git](https://github.com/your-username/music-pulse.git)
+git clone https://github.com/tin0x/music-pulse-dashboard.git
 ```
 
 2. Boot into the source directory and pull production dependencies:
 
 ```bash
-cd music-pulse
+cd music-pulse-dashboard
 npm install
 ```
 
