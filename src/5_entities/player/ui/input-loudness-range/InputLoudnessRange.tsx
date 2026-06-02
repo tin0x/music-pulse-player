@@ -22,7 +22,7 @@ const InputLoudnessRange: React.FC<InputRangeLoudnessProps> = ({ volume, isMuted
         {actionSlot}
         <input
           className={classes.inputLoudnessRange}
-          style={isOpenDropdown ? adaptiveStyle : basicStyle}
+          style={basicStyle}
           min={0}
           max={1}
           step={0.01}
@@ -48,7 +48,7 @@ const InputLoudnessRange: React.FC<InputRangeLoudnessProps> = ({ volume, isMuted
           {actionSlot}
           <input
             className={classes.inputLoudnessRange}
-            style={isOpenDropdown ? adaptiveStyle : basicStyle}
+            style={adaptiveStyle}
             min={0}
             max={1}
             step={0.01}
