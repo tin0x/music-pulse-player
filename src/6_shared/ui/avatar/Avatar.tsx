@@ -5,10 +5,12 @@ import classes from '@shared/ui/avatar/Avatar.module.scss';
 import imagePoster from '@shared/assets/images/сover-track.webp';
 import imageHuman from '@shared/assets/images/human.webp';
 import { Link } from 'react-router-dom';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const Avatar: React.FC<AvatarProps> = React.memo(
   ({ className, src, type, alt, isActive, isThisPlayingTrack, isPlaying, isBuffering, pathTo }) => {
     const [isError, setIsError] = useState(false);
+    const [isLoading, setIsLoading] = useState(!!src);
 
     const sourceAvatar = src && src.trim() !== '' ? src : type === 'track' ? imagePoster : imageHuman;
     const errorAvatar = type === 'track' ? imagePoster : imageHuman;
@@ -21,8 +23,16 @@ const Avatar: React.FC<AvatarProps> = React.memo(
         })}
         lang="en"
       >
+        {isLoading && (
+          <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-hightlight)">
+            <Skeleton circle width="100%" height="100%" />
+          </SkeletonTheme>
+        )}
         <img
-          className={classes.avatarImage}
+          className={clsx(classes.avatarImage, {
+            [classes.avatarHidden]: isLoading,
+          })}
+          onLoad={() => setIsLoading(false)}
           onError={() => setIsError(true)}
           src={isError ? errorAvatar : sourceAvatar}
           alt={alt}
