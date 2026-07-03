@@ -29,7 +29,7 @@ const GenreSlider: React.FC<GenreSliderProps> = ({ className, lang }) => {
             <li key={item.title} className={classes.genreSliderItem}>
               <Link
                 className={classes.genreSliderSlide}
-                to={`/album?genre=${item.param}&page=1&limit=10&&sort=relevant&mood=other`}
+                to={`/album?genre=${item.param}&page=1&sort=relevant&mood=other`}
               >
                 <GenreItem src={item.poster} subTitle={t.str[item.title as keyof typeof t.str]} />
               </Link>

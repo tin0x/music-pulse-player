@@ -21,9 +21,9 @@ The project strictly adheres to **Feature-Sliced Design (FSD)** architecture pri
 ### Complete Application Views
 
 - **Dashboard & Swipers (`dashboard-page`):** Fluid, high-performance genre/playlist sliders powered by `embla-carousel-react` with native scroll fallbacks.
-- **Artist Dynamic Profiles (`artist-page`):** Displays comprehensive metadata (Location, Subscribes, Album counts, Bio) alongside a reactive tracking table containing full discography controls (as seen in `image_c8a283.jpg`).
-- **Detailed Track Insights (`track-page`):** Dedicated playback views featuring blurred background ambient covers, track length metrics, release timelines, and favorite counters (as seen in `image_c8a2a7.jpg`).
-- **Interactive Control Center (`settings-page`):** Allows users to dynamically toggle internationalization contexts (English / Ukrainian) and wipe targeted metadata clusters like local history or favorite tracks (as seen in `image_c8a587.png`).
+- **Artist Dynamic Profiles (`artist-page`):** Displays comprehensive metadata (Location, Subscribes, Album counts, Bio) alongside a reactive tracking table containing full discography controls.
+- **Detailed Track Insights (`track-page`):** Dedicated playback views featuring blurred background ambient covers, track length metrics, release timelines, and favorite counters.
+- **Interactive Control Center (`settings-page`):** Allows users to dynamically toggle internationalization contexts (English / Ukrainian) and wipe targeted metadata clusters like local history or favorite tracks.
 
 ### Performance & Polish
 

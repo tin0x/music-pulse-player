@@ -6,7 +6,7 @@ import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 
 const AlbumPage: React.FC = () => {
   useToggleTitle('Music Pulse | Album');
-  const { genre, tracksLimitPerPage, currentPage, totalTracks, t } = useInitAlbumPage();
+  const { currentGenre, tracksLimitPerPage, currentPage, totalTracks, t } = useInitAlbumPage();
 
   return (
     <section className={classes.album}>
@@ -14,11 +14,10 @@ const AlbumPage: React.FC = () => {
         <div className={classes.albumTopBar}>
           <h1
             className={classes.albumTitle}
-          >{`${t.str.titleAlbum} ${t.str[genre as keyof typeof t.str] || t.str['House']}`}</h1>
-          <span className={classes.albumQuantity}>{`${t.str.subtitleAlbum} ${totalTracks || t.str['unknown']}`}</span>
+          >{`${t.str.titleAlbum} ${t.str[currentGenre as keyof typeof t.str] || t.str['House']}`}</h1>
         </div>
         <FilteredTracksWidget
-          genre={genre}
+          genre={currentGenre}
           tracksLimitPerPage={tracksLimitPerPage ?? 5}
           currentPage={currentPage}
           totalTracks={totalTracks}
