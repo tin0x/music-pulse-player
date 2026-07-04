@@ -7,12 +7,12 @@ import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 
 const ArtistPage: React.FC = () => {
   useToggleTitle('Music Pulse | Artist');
-  const { id: artistIdParam, pageParam, limitParam } = useInitArtistPage();
+  const { id: artistIdParam, currentPage, itemsPerPage } = useInitArtistPage();
 
   return (
     <section className={classes.artist}>
       <div className={classes.artistWrapper}>
-        <ArtistInfoWidget artistIdParam={artistIdParam || ''} pageParam={pageParam} limitParam={limitParam} />
+        <ArtistInfoWidget artistIdParam={artistIdParam || ''} pageParam={currentPage} limitParam={itemsPerPage} />
         <BackgroundSectionWidget idParam={artistIdParam} type="artist" />
       </div>
     </section>

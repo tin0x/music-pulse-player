@@ -6,9 +6,12 @@ import ToggleLang from '@features/toggle-lang/ui/ToggleLang.tsx';
 import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 import ClearHistory from '@features/clear-history/ui/ClearHistory.tsx';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
 
 const SettingsPage: React.FC = () => {
   useToggleTitle('Music Pulse | Settings');
+  useCleaningURL();
+
   const lang = useAppSelector(getCurrentLanguage);
   const t = getTranslate(lang);
 

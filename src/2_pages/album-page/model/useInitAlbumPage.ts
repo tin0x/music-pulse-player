@@ -23,12 +23,15 @@ export const useInitAlbumPage = () => {
   const t = getTranslate(lang);
 
   useEffect(() => {
+    const PARAMS_KEYS = ['genre', 'sort', 'mood', 'page'];
+
     const invalidGenre = !genre || !genres.includes(genre as GenreType);
     const invalidSort = !sort || !sortingParams.includes(sort);
     const invalidMood = !mood || !moodParams.includes(mood);
     const invalidPage = !page || parseInt(page) <= 0 || parseInt(page) > 30 || isNaN(parseInt(page));
+    const hasTrashKeys = Array.from(searchParams.keys()).some(key => !PARAMS_KEYS.includes(key));
 
-    if (invalidGenre || invalidPage || invalidSort || invalidMood) {
+    if (invalidGenre || invalidPage || invalidSort || invalidMood || hasTrashKeys) {
       setSearchParams(
         () => {
           const cleanParams = new URLSearchParams();

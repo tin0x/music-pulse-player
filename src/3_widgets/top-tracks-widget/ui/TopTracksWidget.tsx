@@ -52,7 +52,7 @@ const TopTracksWidget: React.FC<TopTracksWidgetProps> = ({
       isPlaying={isPlaying}
       isBuffering={isBuffering}
       currentTrackId={currentTrackId ?? ''}
-      pathTo="/tracks/trending?limit=50"
+      pathTo="/tracks/trending"
       lang={lang}
     />
   );

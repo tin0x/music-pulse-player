@@ -22,6 +22,7 @@ import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import Button from '@shared/ui/button/Button.tsx';
 import IconClose from '@shared/assets/icons/close.svg?react';
 import clsx from 'clsx';
+import Copyright from '@shared/ui/copyright/Copyright.tsx';
 
 const Layout: React.FC = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState(false);
@@ -55,7 +56,10 @@ const Layout: React.FC = () => {
           </Button>
         </LogoContainer>
         <NavigationWidget />
-        <VersionInfo text={`${t.str.versionHeader} 1.1.0`} />
+        <div className={classes.layoutBottomHeader}>
+          <VersionInfo text={`${t.str.versionHeader} 1.1.0`} />
+          <Copyright/>
+        </div>
       </HeaderWidget>
       <MainWidget
         isHeaderOpen={isHeaderOpen}

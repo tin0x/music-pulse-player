@@ -28,7 +28,7 @@ const ArtistItem: React.FC<ArtistItemProps> = React.memo(
         subtext={`${artist.followerCount} ${t.str.followersArtistsAside}`}
         refElement={refElement}
         isBorder={artistIdParam === artist.id}
-        pathTo={`/artist/${artist.id}?page=1&limit=10`}
+        pathTo={`/artist/${artist.id}?page=1`}
         alt="artist avatar"
         slots={{
           action: (
@@ -43,7 +43,7 @@ const ArtistItem: React.FC<ArtistItemProps> = React.memo(
               </Button>
               <Dropdown className={classes.artistItemDropdown} isLast={isLast} isOpen={isOpenDropdown}>
                 <ul className={classes.artistItemList}>
-                  <Link className={classes.artistItemLink} to={`/artist/${artist.id}?page=1&limit=10`}>
+                  <Link className={classes.artistItemLink} to={`/artist/${artist.id}?page=1`}>
                     {t.str.dropdownValueGoProfile}
                   </Link>
                   {renderActionToggleFavorite(artist.id)}

@@ -9,10 +9,13 @@ import SearchKeywordWidget from '@widgets/search-keyword-widget/ui/SearchKeyword
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
 
 const DashboardPage: React.FC = () => {
   const { isAuth } = useIsAuth();
   useToggleTitle('Music Pulse | Dashboard');
+  useCleaningURL();
+
   const tracksLimitPerPage = 5;
 
   const lang = useAppSelector(getCurrentLanguage);
