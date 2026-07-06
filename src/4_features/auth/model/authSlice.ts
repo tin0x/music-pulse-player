@@ -1,8 +1,9 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { InitialState, PayloadToken } from '@features/auth/types.ts';
+import { load } from '@shared/lib/utils/storage/load.ts';
 
 const initialState: InitialState = {
-  token: null,
+  token: load('token'),
 };
 
 export const authSlice = createSlice({
@@ -12,7 +13,9 @@ export const authSlice = createSlice({
     setToken: (state, action: PayloadAction<PayloadToken>) => {
       state.token = action.payload;
     },
-    clearToken: () => initialState,
+    clearToken: (state) => {
+      state.token = null;
+    },
   },
 });
 

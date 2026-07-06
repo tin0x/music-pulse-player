@@ -29,7 +29,7 @@ export const useInitAlbumPage = () => {
     const invalidSort = !sort || !sortingParams.includes(sort);
     const invalidMood = !mood || !moodParams.includes(mood);
     const invalidPage = !page || parseInt(page) <= 0 || parseInt(page) > 30 || isNaN(parseInt(page));
-    const hasTrashKeys = Array.from(searchParams.keys()).some(key => !PARAMS_KEYS.includes(key));
+    const hasTrashKeys = Array.from(searchParams.keys()).some((key) => !PARAMS_KEYS.includes(key));
 
     if (invalidGenre || invalidPage || invalidSort || invalidMood || hasTrashKeys) {
       setSearchParams(

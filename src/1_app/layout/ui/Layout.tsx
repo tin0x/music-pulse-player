@@ -25,21 +25,24 @@ import clsx from 'clsx';
 import Copyright from '@shared/ui/copyright/Copyright.tsx';
 
 const Layout: React.FC = () => {
-  const [isHeaderOpen, setIsHeaderOpen] = useState(false);
-  const [isAsideOpen, setIsAsideOpen] = useState(false);
+  const [isHeaderOpen, setIsHeaderOpen] = useState(() => window.innerWidth >= 1600);
+  const [isAsideOpen, setIsAsideOpen] = useState(() => window.innerWidth >= 1600);
 
-  const location = useLocation();
-
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (window.innerWidth < 1600) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsHeaderOpen(false);
-      setIsAsideOpen(false);
+      const timer = setTimeout(() => {
+        setIsHeaderOpen(false);
+        setIsAsideOpen(false);
+      }, 0);
+
+      return () => clearTimeout(timer);
     }
-  }, [location.pathname]);
+  }, [pathname]);
+
+  const lang = useAppSelector(getCurrentLanguage);
+  const t = getTranslate(lang);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -58,7 +61,7 @@ const Layout: React.FC = () => {
         <NavigationWidget />
         <div className={classes.layoutBottomHeader}>
           <VersionInfo text={`${t.str.versionHeader} 1.1.0`} />
-          <Copyright/>
+          <Copyright />
         </div>
       </HeaderWidget>
       <MainWidget

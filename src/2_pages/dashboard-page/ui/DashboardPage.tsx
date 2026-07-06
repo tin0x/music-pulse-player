@@ -22,7 +22,7 @@ const DashboardPage: React.FC = () => {
   const t = getTranslate(lang);
 
   if (!isAuth) {
-    return <Navigate to="/auth"></Navigate>;
+    return <Navigate to="/auth" replace></Navigate>;
   }
 
   return (
