@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classes from '@features/auth/ui/RegisterForm.module.scss';
 import Button from '@shared/ui/button/Button.tsx';
 import clsx from 'clsx';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import type { FormUser } from '@features/auth/types.ts';
 import IconAvatar from '@shared/assets/icons/avatar.svg?react';
 import { useValidateForm } from '@features/auth/model/hooks/useValidateForm.ts';
@@ -13,14 +13,16 @@ import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 
 const RegisterForm: React.FC = () => {
   const [previewAvatar, setPreviewAvatar] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
+    control,
     reset,
     setValue,
   } = useForm<FormUser>();
+
   const { onSubmit, formError, handleFileChange } = useValidateForm({
     reset,
     setPreviewAvatar,
@@ -28,8 +30,10 @@ const RegisterForm: React.FC = () => {
     previewAvatar,
   });
 
-  // eslint-disable-next-line react-hooks/incompatible-library
-  const passwordValue = watch('password');
+  const passwordValue = useWatch({
+    control,
+    name: 'password',
+  });
 
   const lang = useAppSelector(getCurrentLanguage);
   const t = getTranslate(lang);
@@ -45,6 +49,7 @@ const RegisterForm: React.FC = () => {
           className={classes.registerFormInput}
           type="text"
           id="username"
+          autoComplete="username"
           placeholder={t.str.usernamePlaceholder}
           {...register('username', {
             required: true,
@@ -66,6 +71,7 @@ const RegisterForm: React.FC = () => {
           className={classes.registerFormInput}
           type="email"
           id="email"
+          autoComplete="email"
           placeholder={t.str.emailPlaceholder}
           {...register('email', {
             required: true,
@@ -87,6 +93,7 @@ const RegisterForm: React.FC = () => {
           className={classes.registerFormInput}
           type="password"
           id="password"
+          autoComplete="new-password"
           placeholder={t.str.passwordPlaceholder}
           {...register('password', {
             required: true,
@@ -108,6 +115,7 @@ const RegisterForm: React.FC = () => {
           className={classes.registerFormInput}
           type="password"
           id="repeatPassword"
+          autoComplete="new-password"
           placeholder={t.str.repeatPasswordPlaceholder}
           {...register('repeatPassword', {
             required: true,
