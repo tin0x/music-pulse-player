@@ -1,6 +1,4 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useIsAuth } from '@features/auth/model/hooks/useFetchToken.ts';
 import classes from '@pages/dashboard-page/ui/DashboardPage.module.scss';
 import GenreSlider from '@entities/album/ui/genre/genre-slider/GenreSlider.tsx';
 import TopTracksWidget from '@widgets/top-tracks-widget/ui/TopTracksWidget.tsx';
@@ -12,7 +10,6 @@ import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
 
 const DashboardPage: React.FC = () => {
-  const { isAuth } = useIsAuth();
   useToggleTitle('Music Pulse | Dashboard');
   useCleaningURL();
 
@@ -20,10 +17,6 @@ const DashboardPage: React.FC = () => {
 
   const lang = useAppSelector(getCurrentLanguage);
   const t = getTranslate(lang);
-
-  if (!isAuth) {
-    return <Navigate to="/auth" replace></Navigate>;
-  }
 
   return (
     <section className={classes.dashboard}>
