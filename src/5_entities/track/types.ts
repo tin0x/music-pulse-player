@@ -3,31 +3,6 @@
 import React from 'react';
 import type { InitialState } from '@entities/user/types.ts';
 
-export type TrackDTO = {
-  id: string;
-  title: string;
-  duration: number;
-  genre: string;
-  favorite_count: number;
-  release_date?: string;
-  user_id?: string;
-  artwork?: {
-    '480x480'?: string;
-  };
-  user: {
-    id: string;
-    name: string;
-    profile_picture: {
-      '480x480'?: string;
-    };
-    follower_count: number;
-    favorite_count: number;
-  };
-  stream: {
-    url: string;
-  };
-};
-
 export type Track = {
   id: string;
   title: string;

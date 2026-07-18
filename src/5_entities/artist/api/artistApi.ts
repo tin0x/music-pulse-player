@@ -1,13 +1,12 @@
 import { baseApi } from '@shared/api/baseApi.ts';
-import { mapArtist, mapArtistTrack } from '@entities/artist/model/utils/mappers.ts';
-import type {
-  ArtistProfile,
-  ArtistProfileDTO,
-  ArtistTrack,
-  ArtistTrackDTO,
-  TracksByArtistIdArgs,
-} from '@entities/artist/types.ts';
-import type { Track } from '@entities/album/types.ts';
+import type { ArtistProfile, ArtistTrack, TracksByArtistIdArgs } from '@entities/artist/types.ts';
+import { mapArtistTrack } from '@entities/artist/mappers/mapArtistTrack.ts';
+import { mapArtist } from '@entities/artist/mappers/mapArtist.ts';
+import { ArtistTracksDTOSchema } from '@entities/artist/schemas/ArtistTracksDTOSchema.ts';
+import {
+  ArtistProfileDTOResponseSchema,
+  ArtistsProfilesDTOResponseSchema,
+} from '@entities/artist/schemas/ArtistProfileDTOSchema.ts';
 
 export const artistApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,16 +17,18 @@ export const artistApi = baseApi.injectEndpoints({
           limit: limit,
         },
       }),
-      transformResponse: (response: { data: ArtistTrackDTO[] }): ArtistTrack[] => {
-        return response.data.map(mapArtistTrack);
+      transformResponse: (response: unknown): ArtistTrack[] => {
+        const dto = ArtistTracksDTOSchema.parse(response);
+        return dto.data.map(mapArtistTrack);
       },
     }),
     getArtistById: builder.query<ArtistProfile, { id: string }>({
       query: ({ id }) => ({
         url: `/users/${id}`,
       }),
-      transformResponse: (response: { data: ArtistProfileDTO }): ArtistProfile => {
-        return mapArtist(response.data);
+      transformResponse: (response: unknown): ArtistProfile => {
+        const dto = ArtistProfileDTOResponseSchema.parse(response);
+        return mapArtist(dto.data);
       },
     }),
     getArtistsByIds: builder.query<ArtistProfile[], { ids: string[] }>({
@@ -39,11 +40,12 @@ export const artistApi = baseApi.injectEndpoints({
           url: `/users?${params.toString()}`,
         };
       },
-      transformResponse: (response: { data: ArtistProfileDTO[] }): ArtistProfile[] => {
-        return response.data.map(mapArtist);
+      transformResponse: (response: unknown): ArtistProfile[] => {
+        const dto = ArtistsProfilesDTOResponseSchema.parse(response);
+        return dto.data.map(mapArtist);
       },
     }),
-    getTracksByArtistId: builder.query<Track[], TracksByArtistIdArgs>({
+    getTracksByArtistId: builder.query<ArtistTrack[], TracksByArtistIdArgs>({
       query: ({ id, limit, offset }) => ({
         url: `/users/${id}/tracks`,
         params: {
@@ -52,8 +54,9 @@ export const artistApi = baseApi.injectEndpoints({
         },
       }),
       keepUnusedDataFor: 86400,
-      transformResponse: (response: { data: ArtistTrackDTO[] }): ArtistTrack[] => {
-        return response.data.map(mapArtistTrack);
+      transformResponse: (response: unknown): ArtistTrack[] => {
+        const dto = ArtistTracksDTOSchema.parse(response);
+        return dto.data.map(mapArtistTrack);
       },
     }),
   }),

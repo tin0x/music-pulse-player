@@ -18,28 +18,7 @@ export type TracksByGenreArgs = {
   moodParam: string;
 };
 
-export type TrackDTO = {
-  id: string;
-  title: string;
-  duration: number;
-  genre: string;
-  favorite_count: number;
-  artwork?: {
-    '480x480'?: string;
-  };
-  user: {
-    id: string;
-    name: string;
-    profile_picture?: {
-      '480x480'?: string;
-    };
-  };
-  stream?: {
-    url: string;
-  };
-};
-
-export type Track = {
+export type TrackByGenre = {
   id: string;
   title: string;
   duration: number;
@@ -54,7 +33,7 @@ export type Track = {
   streamUrl: string;
 };
 
-export type TracksByGenre = Track[];
+export type TracksByGenre = TrackByGenre[];
 
 // UI
 

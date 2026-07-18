@@ -2,12 +2,13 @@ import { baseApi } from '@shared/api/baseApi.ts';
 import type {
   ArtistsFromSearchResult,
   ArtistsFromSearchResultArgs,
-  ArtistsFromSearchResultDTO,
   TracksFromSearchResult,
   TracksFromSearchResultArgs,
-  TracksFromSearchResultDTO,
 } from '@entities//search/types.ts';
-import { mapArtistsFromSearchResult, mapTracksFromSearchResult } from '@entities/search/lib/mappers.ts';
+import { mapTracksFromSearchResult } from '@entities/search/mappers/mapTracksFromSearchResult.ts';
+import { mapArtistsFromSearchResult } from '@entities/search/mappers/mapArtistsFromSearchResult.ts';
+import { TracksFromSearchResultDTOSchema } from '@entities/search/schemas/TracksFromSearchResultDTOSchema.ts';
+import { ArtistsFromSearchResultDTO } from '@entities/search/schemas/ArtistsFromSearchResultDTOSchema.ts';
 
 export const searchApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -21,8 +22,9 @@ export const searchApi = baseApi.injectEndpoints({
           sort_method: 'popular',
         },
       }),
-      transformResponse: (response: TracksFromSearchResultDTO): TracksFromSearchResult => {
-        return response.data.tracks.map(mapTracksFromSearchResult);
+      transformResponse: (response: unknown): TracksFromSearchResult => {
+        const dto = TracksFromSearchResultDTOSchema.parse(response);
+        return dto.data.tracks.map(mapTracksFromSearchResult);
       },
     }),
     getArtistsFromSearchResult: builder.query<ArtistsFromSearchResult, ArtistsFromSearchResultArgs>({
@@ -35,8 +37,9 @@ export const searchApi = baseApi.injectEndpoints({
           sort_method: 'popular',
         },
       }),
-      transformResponse: (response: ArtistsFromSearchResultDTO): ArtistsFromSearchResult => {
-        return response.data.users.map(mapArtistsFromSearchResult);
+      transformResponse: (response: unknown): ArtistsFromSearchResult => {
+        const dto = ArtistsFromSearchResultDTO.parse(response);
+        return dto.data.users.map(mapArtistsFromSearchResult);
       },
     }),
   }),

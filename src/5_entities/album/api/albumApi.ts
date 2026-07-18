@@ -1,6 +1,7 @@
 import { baseApi } from '@shared/api/baseApi.ts';
-import type { TrackDTO, TracksByGenre, TracksByGenreArgs } from '@entities/album/types.ts';
-import { mapTrackToAlbum } from '@entities/album/lib/mappers.ts';
+import type { TracksByGenre, TracksByGenreArgs } from '@entities/album/types.ts';
+import { TracksByGenreDTOSchema } from '@entities/album/schemas/TracksByGenreDTOSchema.ts';
+import { mapTrackToAlbum } from '@entities/album/mappers/mapTrackToAlbum.ts';
 
 export const albumApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -16,8 +17,9 @@ export const albumApi = baseApi.injectEndpoints({
         },
       }),
       keepUnusedDataFor: 86400,
-      transformResponse: (response: { data: TrackDTO[] }): TracksByGenre => {
-        return response.data.map(mapTrackToAlbum);
+      transformResponse: (response: unknown): TracksByGenre => {
+        const dto = TracksByGenreDTOSchema.parse(response);
+        return dto.data.map(mapTrackToAlbum);
       },
     }),
   }),

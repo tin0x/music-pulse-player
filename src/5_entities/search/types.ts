@@ -3,17 +3,6 @@
 import React from 'react';
 import type { InitialState } from '@entities/user/types.ts';
 
-export type TrackFromSearchResultDTO = {
-  track_id: number;
-  title: string;
-};
-
-export type TracksFromSearchResultDTO = {
-  data: {
-    tracks: TrackFromSearchResultDTO[];
-  };
-};
-
 export type TrackFromSearchResult = {
   trackId: number;
   name: string;
@@ -28,17 +17,6 @@ export type TracksFromSearchResultArgs = {
 };
 
 // SEARCH ARTISTS
-
-export type ArtistFromSearchResultDTO = {
-  id: string;
-  name: string;
-};
-
-export type ArtistsFromSearchResultDTO = {
-  data: {
-    users: ArtistFromSearchResultDTO[];
-  };
-};
 
 export type ArtistsFromSearchResultArgs = {
   query: string;

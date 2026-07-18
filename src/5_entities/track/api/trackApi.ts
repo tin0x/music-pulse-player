@@ -1,6 +1,7 @@
 import { baseApi } from '@shared/api/baseApi.ts';
-import type { Track, TrackArg, TrackDTO, TracksByIdsArgs } from '@entities/track/types.ts';
-import { mapTrack } from '@entities/track/lib/mappers.ts';
+import type { Track, TrackArg, TracksByIdsArgs } from '@entities/track/types.ts';
+import { mapTrack } from '@entities/track/mappers/mapTrack.ts';
+import { TracksDTOSchema } from '@entities/track/schemas/TracksDTOSchema.ts';
 
 export const trackApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -12,8 +13,9 @@ export const trackApi = baseApi.injectEndpoints({
         },
       }),
       keepUnusedDataFor: 86400,
-      transformResponse: (response: { data: TrackDTO[] }): Track[] => {
-        const mappedTracks = response.data.map(mapTrack);
+      transformResponse: (response: unknown): Track[] => {
+        const dto = TracksDTOSchema.parse(response);
+        const mappedTracks = dto.data.map(mapTrack);
         return [...mappedTracks].sort((a, b) => b.favorite - a.favorite);
       },
     }),
@@ -26,8 +28,9 @@ export const trackApi = baseApi.injectEndpoints({
           url: `/tracks?${params.toString()}`,
         };
       },
-      transformResponse: (response: { data: TrackDTO[] }): Track[] => {
-        const mappedTracks = response.data.map(mapTrack);
+      transformResponse: (response: unknown): Track[] => {
+        const dto = TracksDTOSchema.parse(response);
+        const mappedTracks = dto.data.map(mapTrack);
         return [...mappedTracks];
       },
     }),
@@ -39,8 +42,9 @@ export const trackApi = baseApi.injectEndpoints({
         },
       }),
       keepUnusedDataFor: 86400,
-      transformResponse: (response: { data: TrackDTO[] }): Track[] => {
-        const [track] = response.data.map(mapTrack);
+      transformResponse: (response: unknown): Track[] => {
+        const dto = TracksDTOSchema.parse(response);
+        const [track] = dto.data.map(mapTrack);
         return [track];
         // fixed duplicate API issue
       },

@@ -1,6 +1,7 @@
-import type { Track, TrackDTO } from '@entities/album/types.ts';
+import type { TrackByGenreDTO } from '@entities/album/schemas/TracksByGenreDTOSchema.ts';
+import type { TrackByGenre } from '@entities/album/types.ts';
 
-export const mapTrackToAlbum = (dto: TrackDTO): Track => ({
+export const mapTrackToAlbum = (dto: TrackByGenreDTO): TrackByGenre => ({
   id: dto.id,
   title: dto.title,
   duration: dto.duration,

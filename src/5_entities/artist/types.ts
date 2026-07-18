@@ -1,47 +1,6 @@
 import React from 'react';
 import type { InitialState } from '@entities/user/types.ts';
 
-export type ArtistProfileDTO = {
-  id: string;
-  name: string;
-  location: string;
-  bio: string;
-  album_count: number;
-  follower_count: number;
-  profile_picture: {
-    '480x480': string;
-  };
-  user_id: string;
-  track_count: number;
-  instagram_handle: string;
-  twitter_handle: string;
-  tiktok_handle: string;
-  website: string;
-};
-
-export type ArtistTrackDTO = {
-  id: string;
-  title: string;
-  duration: number;
-  genre: string;
-  favorite_count: number;
-  artwork?: {
-    '480x480'?: string;
-  };
-  user: {
-    id: string;
-    name: string;
-    profile_picture: {
-      '480x480'?: string | null;
-    };
-    follower_count: number;
-    favorite_count: number;
-  };
-  stream: {
-    url: string;
-  };
-};
-
 export type ArtistTrack = {
   id: string;
   title: string;
@@ -67,7 +26,7 @@ export type ArtistProfile = {
   albumCount: number;
   followerCount: number;
   avatar: string;
-  userId: string;
+  userId: number;
   trackCount: number;
   socialLinks: {
     instagram: string;
