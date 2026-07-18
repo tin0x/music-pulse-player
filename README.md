@@ -41,6 +41,7 @@ The codebase relies strictly on a production-ready, ultra-modern tech stack:
 - **State Architecture:** Redux Toolkit 2.11 (Slices, Selectors, Custom Action Listeners) paired with React Redux 9.2.
 - **Data Hydration:** RTK Query (Robust REST API async handling, automatic polling, and caching).
 - **Client Routing:** React Router DOM 7.13 (Protected routes, dynamic parameters, nested outlet layouts).
+- **Runtime Data Validation:** Zod 4.4.3 (Type-safe schema validation, API response parsing, runtime data contracts, and automatic TypeScript type inference).
 - **Forms & Inputs:** React Hook Form 7.72.
 - **Styling Architecture:** Sass 1.98 (SCSS Modules), BEM Methodology, `clsx` utility modifiers, and dynamic CSS Custom Properties.
 - **UI Components & Motion:** `embla-carousel-react` 8.6 (for fluid genre sliders) and `react-loading-skeleton` 3.5.
