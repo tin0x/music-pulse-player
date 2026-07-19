@@ -1,17 +1,18 @@
 import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch';
 import { setUser } from '@entities/user/model/userSlice.ts';
 import type { SubmitHandler } from 'react-hook-form';
-import type { UserProfile, UseValidateFormArgs } from '@features/auth/types.ts';
+import type { UseValidateFormArgs } from '@features/auth/types.ts';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setToken } from '@features/auth/model/authSlice.ts';
 import { createToken } from '@features/auth/lib/utils/createToken.ts';
+import type { FormUser } from '@features/auth/schemas/RegisterSchema.ts';
 
 export const useValidateForm = ({ reset, setPreviewAvatar, setValue, previewAvatar }: UseValidateFormArgs) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<UserProfile> = (data) => {
+  const onSubmit: SubmitHandler<FormUser> = (data) => {
     const { username, email } = data;
     dispatch(setUser({ username, email, avatar: previewAvatar }));
     dispatch(setToken(createToken()));

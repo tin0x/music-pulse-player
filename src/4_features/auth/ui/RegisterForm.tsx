@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import classes from '@features/auth/ui/RegisterForm.module.scss';
 import Button from '@shared/ui/button/Button.tsx';
 import clsx from 'clsx';
-import { useForm, useWatch } from 'react-hook-form';
-import type { FormUser } from '@features/auth/types.ts';
+import { useForm } from 'react-hook-form';
 import IconAvatar from '@shared/assets/icons/avatar.svg?react';
 import { useValidateForm } from '@features/auth/model/hooks/useValidateForm.ts';
-import { regExp } from '@features/auth/model/constants.ts';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { type FormUser, RegisterSchema } from '@features/auth/schemas/RegisterSchema.ts';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const RegisterForm: React.FC = () => {
   const [previewAvatar, setPreviewAvatar] = useState<string | null>(null);
@@ -17,22 +17,19 @@ const RegisterForm: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    control,
+    formState: { errors, isValid },
     reset,
     setValue,
-  } = useForm<FormUser>();
+  } = useForm<FormUser>({
+    mode: 'onBlur',
+    resolver: zodResolver(RegisterSchema),
+  });
 
   const { onSubmit, formError, handleFileChange } = useValidateForm({
     reset,
     setPreviewAvatar,
     setValue,
     previewAvatar,
-  });
-
-  const passwordValue = useWatch({
-    control,
-    name: 'password',
   });
 
   const lang = useAppSelector(getCurrentLanguage);
@@ -51,10 +48,7 @@ const RegisterForm: React.FC = () => {
           id="username"
           autoComplete="username"
           placeholder={t.str.usernamePlaceholder}
-          {...register('username', {
-            required: true,
-            pattern: regExp.username,
-          })}
+          {...register('username')}
         />
         <small
           className={clsx(classes.registerFormInfo, {
@@ -73,14 +67,11 @@ const RegisterForm: React.FC = () => {
           id="email"
           autoComplete="email"
           placeholder={t.str.emailPlaceholder}
-          {...register('email', {
-            required: true,
-            pattern: regExp.email,
-          })}
+          {...register('email')}
         />
         <small
           className={clsx(classes.registerFormInfo, {
-            [classes.registerFormInfoActive]: errors.email,
+            [classes.registerFormInfoActive]: errors.email?.message,
           })}
         >
           {formError[lang].email}
@@ -95,14 +86,11 @@ const RegisterForm: React.FC = () => {
           id="password"
           autoComplete="new-password"
           placeholder={t.str.passwordPlaceholder}
-          {...register('password', {
-            required: true,
-            pattern: regExp.password,
-          })}
+          {...register('password')}
         />
         <small
           className={clsx(classes.registerFormInfo, {
-            [classes.registerFormInfoActive]: errors.password,
+            [classes.registerFormInfoActive]: errors.password?.message,
           })}
         >
           {formError[lang].password}
@@ -118,14 +106,12 @@ const RegisterForm: React.FC = () => {
           autoComplete="new-password"
           placeholder={t.str.repeatPasswordPlaceholder}
           {...register('repeatPassword', {
-            required: true,
-            pattern: regExp.password,
-            validate: (value) => value === passwordValue,
+            deps: ['password'],
           })}
         />
         <small
           className={clsx(classes.registerFormInfo, {
-            [classes.registerFormInfoActive]: errors.repeatPassword,
+            [classes.registerFormInfoActive]: errors.repeatPassword?.message,
           })}
         >
           {formError[lang].repeatPassword}
@@ -151,7 +137,7 @@ const RegisterForm: React.FC = () => {
         </div>
       </fieldset>
 
-      <Button className={classes.registerFormButton} type="submit">
+      <Button className={classes.registerFormButton} disabled={!isValid} type="submit">
         {t.str.buttonRegisterForm}
       </Button>
     </form>
