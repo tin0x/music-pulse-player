@@ -18,9 +18,11 @@ const ArtistTrackDTOSchema = z.object({
     follower_count: z.number().nullish(),
     favorite_count: z.number().nullish(),
   }),
-  stream: z.object({
-    url: z.string().nullish(),
-  }),
+  stream: z
+    .object({
+      url: z.string().nullish(),
+    })
+    .nullish(),
 });
 
 export const ArtistTracksDTOSchema = z.object({
