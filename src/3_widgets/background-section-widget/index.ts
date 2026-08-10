@@ -1,0 +1,1 @@
+export { default as BackgroundSectionWidget } from './ui/BackgroundSectionWidget'

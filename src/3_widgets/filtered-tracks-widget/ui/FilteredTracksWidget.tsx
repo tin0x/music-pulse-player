@@ -3,15 +3,15 @@ import classes from '@widgets/filtered-tracks-widget/ui/FilteredTracksWidget.mod
 import { useFetchTracksByGenre } from '@widgets/filtered-tracks-widget/model/useFetchTracksByGenre.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import type { TopGenreWidgetProps } from '@widgets/filtered-tracks-widget/types.ts';
-import TrackList from '@entities/track/ui/tracks/track-list/TrackList.tsx';
-import PageSwitcher from '@features/pagination-controls/ui/page-switcher/PageSwitcher.tsx';
 import { useInitFilteredTracksWidget } from '@widgets/filtered-tracks-widget/model/useInitFilteredTracksWidget.tsx';
 import { usePagination } from '@features/pagination-controls/model/usePagination.ts';
-import SortingSelect from '@features/sorting-select/ui/SortingSelect.tsx';
 import FilteredTracksSkeleton from '@shared/ui/skeletons/filtered-tracks-skeleton/FilteredTracksSkeleton.tsx';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { TrackList } from '@entities/track';
+import { PageSwitcher } from '@features/pagination-controls';
+import { SortingSelect } from '@features/sorting-select';
 
 const FilteredTracksWidget: React.FC<TopGenreWidgetProps> = ({
   genre,

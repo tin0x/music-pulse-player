@@ -3,10 +3,10 @@ import { skipToken } from '@reduxjs/toolkit/query';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentTrackId, getIsBuffering, getIsPlaying } from '@entities/player/model/selectors.ts';
 import { useCallback } from 'react';
-import TogglePlayback from '@features/player-controls/ui/toggle-playback/TogglePlayback.tsx';
 import type { Track } from '@entities/track/types.ts';
-import ToggleFavorite from '@features/toggle-favorite/ui/ToggleFavorite.tsx';
-import DurationChange from '@features/duration-change/ui/DurationChange.tsx';
+import { DurationChange } from '@features/duration-change';
+import { TogglePlayback } from '@features/player-controls';
+import { ToggleFavorite } from '@features/toggle-favorite';
 
 export const useInitArtistInfoWidget = (artistParamId: string, pageParam: number, limitParam: number) => {
   const offset = (pageParam - 1) * limitParam;

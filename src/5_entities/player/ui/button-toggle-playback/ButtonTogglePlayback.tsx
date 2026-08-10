@@ -12,7 +12,7 @@ const ButtonTogglePlayback: React.FC<ButtonTogglePlaybackProps> = React.memo(
     if (isBuffering) {
       return (
         <Button
-          className={clsx(className, classes.buttonTogglePlayback)}
+          className={clsx(classes.buttonTogglePlayback, className)}
           aria-label="loading a track"
           lang="en"
           onClick={onClick}
@@ -23,7 +23,7 @@ const ButtonTogglePlayback: React.FC<ButtonTogglePlaybackProps> = React.memo(
     } else {
       return (
         <Button
-          className={clsx(className, classes.buttonTogglePlayback)}
+          className={clsx(classes.buttonTogglePlayback, className)}
           aria-label={isPlaying ? 'pause' : 'play'}
           lang="en"
           onClick={onClick}

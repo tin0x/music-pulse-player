@@ -1,16 +1,16 @@
 import React from 'react';
 import classes from '@widgets/artist-info-widget/ui/ArtistInfoWidget.module.scss';
-import ArtistDescription from '@entities/artist/ui/artist-description/ArtistDescription.tsx';
 import type { ArtistInfoWidgetProps } from '@widgets/artist-info-widget/types.ts';
 import { useInitArtistInfoWidget } from '@widgets/artist-info-widget/model/useInitArtistInfoWidget.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import PageSwitcher from '@features/pagination-controls/ui/page-switcher/PageSwitcher.tsx';
 import { usePagination } from '@features/pagination-controls/model/usePagination.ts';
-import TrackList from '@entities/track/ui/tracks/track-list/TrackList.tsx';
 import ArtistDescriptionSkeleton from '@shared/ui/skeletons/artist-description-skeleton/ArtistDescriptionSkeleton.tsx';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { TrackList } from '@entities/track';
+import { ArtistDescription } from '@entities/artist';
+import { PageSwitcher } from '@features/pagination-controls';
 
 const ArtistInfoWidget: React.FC<ArtistInfoWidgetProps> = ({ artistIdParam, pageParam, limitParam }) => {
   const {

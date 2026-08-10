@@ -1,0 +1,1 @@
+export { default as MainWidget } from './ui/MainWidget'

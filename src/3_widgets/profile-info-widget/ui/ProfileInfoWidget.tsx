@@ -2,11 +2,11 @@ import React from 'react';
 import classes from '@widgets/profile-info-widget/ui/ProfileInfoWidget.module.scss';
 import Avatar from '@shared/ui/avatar/Avatar.tsx';
 import { useInitProfileInfoWidget } from '@widgets/profile-info-widget/model/useInitProfileInfoWidget.ts';
-import ButtonProfile from '@entities/user/ui/button-profile/ButtonProfile.tsx';
 import Popup from '@shared/ui/popup/Popup.tsx';
-import ChangeAvatar from '@features/change-avatar/ui/ChangeAvatar.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { ButtonProfile } from '@entities/user';
+import { ChangeAvatar } from '@features/change-avatar';
 
 const ProfileInfoWidget: React.FC = () => {
   const {

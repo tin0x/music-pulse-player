@@ -1,12 +1,12 @@
 import React from 'react';
-import MessageItem from '@entities/user/ui/message-item/MessageItem.tsx';
-import ButtonDeleteMessage from '@features/delete-message/ui/ButtonDeleteMessage.tsx';
 import type { MessageCardWidgetProps } from '@widgets/message-card-widget/type.ts';
+import { MessageItem } from '@entities/user';
+import { DeleteMessage } from '@features/delete-message';
 
 const MessageCardWidget: React.FC<MessageCardWidgetProps> = ({ id, title, text }) => {
   return (
     <MessageItem title={title} text={text}>
-      <ButtonDeleteMessage itemId={id} />
+      <DeleteMessage itemId={id} />
     </MessageItem>
   );
 };

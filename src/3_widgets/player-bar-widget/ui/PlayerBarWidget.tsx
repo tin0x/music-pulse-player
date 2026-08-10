@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import classes from '@widgets/player-bar-widget/ui/PlayerBarWidget.module.scss';
-import TrackInfo from '@entities/player/ui/track-info/TrackInfo.tsx';
-import SeekBackward from '@features/player-controls/ui/seek-backward/SeekBackward.tsx';
-import SwitchPreviousTrack from '@features/player-controls/ui/switch-previous-track/SwitchPreviousTrack.tsx';
-import TogglePlayback from '@features/player-controls/ui/toggle-playback/TogglePlayback.tsx';
-import SwitchNextTrack from '@features/player-controls/ui/switch-next-track/SwitchNextTrack.tsx';
-import SeekForward from '@features/player-controls/ui/seek-forward/SeekForward.tsx';
-import ChangeDurationRange from '@features/player-controls/ui/change-duration-range/ChangeDurationRange.tsx';
-import ChangeLoudnessRange from '@features/player-controls/ui/change-loudness-range/ChangeLoudnessRange.tsx';
 import { useInitPlayerBarWidget } from '@widgets/player-bar-widget/model/useInitPlayerBarWidget.ts';
-import ChooseShuffleList from '@features/player-controls/ui/choose-shuffle-list/ChooseShuffleList.tsx';
 import ChooseRepeatTrack from '@features/player-controls/ui/choose-repeat-track/ChooseRepeatTrack.tsx';
-import ToggleFavorite from '@features/toggle-favorite/ui/ToggleFavorite.tsx';
 import Button from '@shared/ui/button/Button.tsx';
 import IconDots from '@shared/assets/icons/dots.svg?react';
 import Dropdown from '@shared/ui/dropdown/Dropdown.tsx';
+import { TrackInfo } from '@entities/player';
+import {
+  ChangeDurationRange,
+  ChangeLoudnessRange,
+  ChooseShuffleList,
+  SeekBackward,
+  SeekForward,
+  SwitchNextTrack,
+  SwitchPreviousTrack,
+  TogglePlayback,
+} from '@features/player-controls';
+import { ToggleFavorite } from '@features/toggle-favorite';
 
 const PlayerBarWidget: React.FC = () => {
   const { playerContext, currentTrack, isThisPlayingTrack, isPlaying, isBuffering } = useInitPlayerBarWidget();

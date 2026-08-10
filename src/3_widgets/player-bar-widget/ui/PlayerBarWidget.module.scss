@@ -19,8 +19,8 @@
 
   &Playback {
     color: var(--color-text-primary);
-    width: var(--player-control-size);
-    height: var(--player-control-size);
+    width: var(--player-control-size) !important;
+    height: var(--player-control-size) !important;
     padding: 4px;
   }
 

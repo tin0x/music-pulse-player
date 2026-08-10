@@ -1,0 +1,1 @@
+export { default as TopArtistsWidget } from './ui/TopArtistsWidget.tsx'

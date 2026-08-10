@@ -1,0 +1,1 @@
+export { default as GenreSlider } from './ui/genre/genre-slider/GenreSlider.tsx'

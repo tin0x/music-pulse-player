@@ -1,6 +1,6 @@
 import React from 'react';
-import ButtonSeekForward from '@entities/player/ui/button-seek-forward/ButtonSeekForward.tsx';
 import { useSeekForward } from '@features/player-controls/model/useSeekForward.ts';
+import { ButtonSeekForward } from '@entities/player';
 
 const SeekForward: React.FC = () => {
   const { handleSeekForward, isBuffering } = useSeekForward();

@@ -1,0 +1,1 @@
+export { default as PageSwitcher } from './ui/page-switcher/PageSwitcher.tsx'

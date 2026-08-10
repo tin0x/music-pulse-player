@@ -31,7 +31,7 @@
     width: 70px;
     height: 70px;
     color: var(--color-text-secondary);
-    display: none;
+    display: none !important;
 
     &:hover {
       color: var(--color-accent);
@@ -100,7 +100,7 @@
     }
 
     &ButtonClose {
-      display: block;
+      display: block !important;
     }
 
     &[data-header-open='true'] {

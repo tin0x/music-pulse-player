@@ -1,0 +1,1 @@
+export { default as ClearHistory } from './ui/ClearHistory'

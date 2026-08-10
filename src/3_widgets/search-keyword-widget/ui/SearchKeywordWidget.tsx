@@ -1,7 +1,7 @@
 import React from 'react';
-import InputSearch from '@entities/search/ui/input-search/InputSearch.tsx';
-import SearchKeyword from '@features/search-keyword/ui/SearchKeyword.tsx';
 import { useInitSearchKeywordWidget } from '@widgets/search-keyword-widget/model/useInitSearchKeywordWidget.ts';
+import { InputSearch } from '@entities/search';
+import { SearchKeyword } from '@features/search-keyword';
 
 const SearchKeywordWidget: React.FC = () => {
   const { value, setValue, mixedArray, isLoading, lang } = useInitSearchKeywordWidget();

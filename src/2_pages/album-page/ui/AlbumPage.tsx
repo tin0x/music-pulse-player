@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from '@pages/album-page/ui/AlbumPage.module.scss';
-import FilteredTracksWidget from '@widgets/filtered-tracks-widget/ui/FilteredTracksWidget.tsx';
 import { useInitAlbumPage } from '@pages/album-page/model/useInitAlbumPage.ts';
 import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
+import { FilteredTracksWidget } from '@widgets/filtered-tracks-widget';
 
 const AlbumPage: React.FC = () => {
   useToggleTitle('Music Pulse | Album');

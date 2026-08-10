@@ -3,7 +3,7 @@ import classes from '@entities/player/ui/input-loudness-range/InputLoudnessRange
 import type { InputRangeLoudnessProps } from '@entities/player/types.ts';
 import { calculateProgress } from '@entities/player/lib/utils/calculateProgress.ts';
 import Dropdown from '@shared/ui/dropdown/Dropdown.tsx';
-import ButtonLoudness from '@entities/player/ui/button-loudness/ButtonLoudness.tsx';
+import { ButtonLoudness } from '@entities/player';
 
 const InputLoudnessRange: React.FC<InputRangeLoudnessProps> = ({ volume, isMuted, actionSlot, onChange }) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);

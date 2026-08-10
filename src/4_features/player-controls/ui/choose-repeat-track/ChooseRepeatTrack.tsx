@@ -1,6 +1,6 @@
 import React from 'react';
-import ButtonRepeatTrack from '@entities/player/ui/button-repeat-track/ButtonRepeatTrack.tsx';
 import { useChooseRepeatTrack } from '@features/player-controls/model/useChooseRepeatTrack.ts';
+import { ButtonRepeatTrack } from '@entities/player';
 
 const ChooseRepeatTrack: React.FC = () => {
   const { modePlayer, handleChooseRepeat } = useChooseRepeatTrack();

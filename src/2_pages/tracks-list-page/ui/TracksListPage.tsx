@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from '@pages/tracks-list-page/ui/TracksListPage.module.scss';
-import TopTracksWidget from '@widgets/top-tracks-widget/ui/TopTracksWidget.tsx';
 import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 import { useInitTracksListPage } from '@pages/tracks-list-page/model/useInitTracksListPage.tsx';
 import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import { TopTracksWidget } from '@widgets/top-tracks-widget';
 
 const TracksListPage: React.FC = () => {
   useToggleTitle('Music Pulse | Top Music');

@@ -1,0 +1,1 @@
+export { default as PlayerBarWidget } from './ui/PlayerBarWidget.tsx'

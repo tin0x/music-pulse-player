@@ -2,10 +2,10 @@ import { useCallback } from 'react';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentTrackId, getIsBuffering, getIsPlaying } from '@entities/player/model/selectors.ts';
 import type { Track } from '@entities/track/types.ts';
-import TogglePlayback from '@features/player-controls/ui/toggle-playback/TogglePlayback.tsx';
 import { useSearchParams } from 'react-router-dom';
 import type { TracksByGenreArgs } from '@entities/album/types.ts';
-import DurationChange from '@features/duration-change/ui/DurationChange.tsx';
+import { DurationChange } from '@features/duration-change';
+import { TogglePlayback } from '@features/player-controls';
 
 export const useInitFilteredTracksWidget = (
   tracksLimitPerPage: number,

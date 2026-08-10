@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from '@widgets/top-tracks-widget/ui/TopTracksWidget.module.scss';
-import TrackList from '@entities/track/ui/tracks/track-list/TrackList.tsx';
 import { useFetchTrendingTracks } from '@widgets/top-tracks-widget/model/useFetchTrendingTracks.ts';
 import clsx from 'clsx';
 import TopTracksSkeleton from '@shared/ui/skeletons/top-tracks-skeleton/TopTracksSkeleton.tsx';
@@ -9,6 +8,7 @@ import type { TopTracksWidgetProps } from '@widgets/top-tracks-widget/types.ts';
 import { useInitTopTracksWidget } from '@widgets/top-tracks-widget/model/useInitTopTracksWidget.tsx';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
+import { TrackList } from '@entities/track';
 
 const TopTracksWidget: React.FC<TopTracksWidgetProps> = ({
   className,

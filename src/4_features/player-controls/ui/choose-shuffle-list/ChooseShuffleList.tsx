@@ -1,6 +1,6 @@
 import React from 'react';
-import ButtonShuffleList from '@entities/player/ui/button-shuffle-list/ButtonShuffleList.tsx';
 import { useChooseShuffle } from '@features/player-controls/model/useChooseShuffle.ts';
+import { ButtonShuffleList } from '@entities/player';
 
 const ChooseShuffleList: React.FC = () => {
   const { modePlayer, handleChooseShuffle } = useChooseShuffle();

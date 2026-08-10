@@ -9,7 +9,7 @@ import Button from '@shared/ui/button/Button.tsx';
 import IconBurger from '@shared/assets/icons/burger.svg?react';
 import IconAside from '@shared/assets/icons/sidebar.svg?react';
 import clsx from 'clsx';
-import HistoryControls from '@features/toggle-app-history/ui/history-controls/HistoryControls.tsx';
+import { HistoryControls } from '@features/toggle-app-history';
 
 const MainWidget: React.FC<MainWidgetProps> = ({
   isHeaderOpen,

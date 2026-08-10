@@ -1,0 +1,1 @@
+export { default as ProfileCardWidget } from './ui/ProfileCardWidget'

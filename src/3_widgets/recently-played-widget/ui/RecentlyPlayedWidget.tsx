@@ -1,10 +1,10 @@
 import React from 'react';
-import RecentlyPlayedList from '@entities/track/ui/tracks/recently-played-list/RecentlyPlayedList.tsx';
 import { useFetchRecentlyPlayedTracks } from '@widgets/recently-played-widget/model/useFetchRecentlyPlayedTracks.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import RecentlyPlayedSkeleton from '@shared/ui/skeletons/recently-played-skeleton/RecentlyPlayedSkeleton.tsx';
 import { useInitRecentlyPlayedWidget } from '@widgets/recently-played-widget/model/useInitRecentlyPlayedWidget.tsx';
 import { useIsAuth } from '@features/auth/model/hooks/useFetchToken.ts';
+import { RecentlyPlayedList } from '@entities/track';
 
 const RecentlyPlayedWidget: React.FC = () => {
   const { lang, renderTogglePlayback } = useInitRecentlyPlayedWidget();

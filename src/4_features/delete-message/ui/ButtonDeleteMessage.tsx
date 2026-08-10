@@ -4,7 +4,7 @@ import IconDelete from '@shared/assets/icons/delete.svg?react';
 import classes from '@features/delete-message/ui/ButtonDeleteMessage.module.scss';
 import { useDeleteMessage } from '@features/delete-message/model/useDeleteMessage.ts';
 
-const ButtonDeleteMessage: React.FC<{ itemId: string }> = ({ itemId }) => {
+const DeleteMessage: React.FC<{ itemId: string }> = ({ itemId }) => {
   const { handleDeleteMessage } = useDeleteMessage(itemId);
 
   return (
@@ -19,4 +19,4 @@ const ButtonDeleteMessage: React.FC<{ itemId: string }> = ({ itemId }) => {
   );
 };
 
-export default ButtonDeleteMessage;
+export default DeleteMessage;

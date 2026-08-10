@@ -1,13 +1,13 @@
 import React from 'react';
 import classes from '@pages/dashboard-page/ui/DashboardPage.module.scss';
-import GenreSlider from '@entities/album/ui/genre/genre-slider/GenreSlider.tsx';
-import TopTracksWidget from '@widgets/top-tracks-widget/ui/TopTracksWidget.tsx';
 import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
-import SearchKeywordWidget from '@widgets/search-keyword-widget/ui/SearchKeywordWidget.tsx';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import { GenreSlider } from '@entities/album';
+import { SearchKeywordWidget } from '@widgets/search-keyword-widget';
+import { TopTracksWidget } from '@widgets/top-tracks-widget';
 
 const DashboardPage: React.FC = () => {
   useToggleTitle('Music Pulse | Dashboard');

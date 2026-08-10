@@ -1,0 +1,1 @@
+export { default as ProfileInfoWidget } from './ui/ProfileInfoWidget'

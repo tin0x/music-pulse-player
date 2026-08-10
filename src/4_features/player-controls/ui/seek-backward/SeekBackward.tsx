@@ -1,6 +1,6 @@
 import React from 'react';
-import ButtonSeekBackward from '@entities/player/ui/button-seek-backward/ButtonSeekBackward.tsx';
 import { useSeekBackward } from '@features/player-controls/model/useSeekBackward.ts';
+import { ButtonSeekBackward } from '@entities/player';
 
 const SeekBackward: React.FC = () => {
   const { handleSeekBackward, isBuffering } = useSeekBackward();

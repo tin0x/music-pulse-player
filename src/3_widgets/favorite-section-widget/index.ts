@@ -1,0 +1,1 @@
+export { default as FavoriteSectionWidget } from './ui/FavoriteSectionWidget'

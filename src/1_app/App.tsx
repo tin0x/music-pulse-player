@@ -1,23 +1,23 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import DashboardPage from '@pages/dashboard-page/ui/DashboardPage.tsx';
 import Layout from '@app/layout/ui/Layout.tsx';
-import AuthPage from '@pages/auth-page/ui/AuthPage.tsx';
-import TracksListPage from '@pages/tracks-list-page/ui/TracksListPage.tsx';
-import AlbumPage from '@pages/album-page/ui/AlbumPage.tsx';
-import ArtistPage from '@pages/artist-page/ui/ArtistPage.tsx';
-import TrackPage from '@pages/track-page/ui/TrackPage.tsx';
-import FavoritePage from '@pages/favorite-page/ui/FavoritePage.tsx';
-import ProfilePage from '@pages/profile-page/ui/ProfilePage.tsx';
-import SettingsPage from '@pages/settings-page/ui/SettingsPage.tsx';
-import ErrorBoundaryPage from '@pages/error-boundary-page/ui/ErrorBoundaryPage.tsx';
-import ProtectedRoute from '@features/auth/ui/ProtectedRoute.tsx';
 import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch.ts';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getToken } from '@features/auth/model/selectors.ts';
 import { useEffect } from 'react';
 import { clearToken } from '@features/auth/model/authSlice.ts';
 import { clearPlayer } from '@entities/player/model/playerSlice.ts';
-import NotFoundPage from '@pages/not-found-page/ui/NotFoundPage.tsx';
+import { AlbumPage } from '@pages/album-page';
+import { ArtistPage } from '@pages/artist-page';
+import { AuthPage } from '@pages/auth-page';
+import { ErrorBoundaryPage } from '@pages/error-boundary-page';
+import { DashboardPage } from '@pages/dashboard-page';
+import { ProfilePage } from '@pages/profile-page';
+import { SettingsPage } from '@pages/settings-page';
+import { FavoritePage } from '@pages/favorite-page';
+import { TrackPage } from '@pages/track-page';
+import { NotFoundPage } from '@pages/not-found-page';
+import { TracksListPage } from '@pages/tracks-list-page';
+import { ProtectedRoute } from '@features/auth';
 
 const App = () => {
   const dispatch = useAppDispatch();

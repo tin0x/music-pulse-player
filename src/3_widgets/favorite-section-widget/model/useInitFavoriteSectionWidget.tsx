@@ -4,9 +4,9 @@ import { useGetArtistsByIdsQuery } from '@entities/artist/api/artistApi.ts';
 import { useGetTracksByIdsQuery } from '@entities/track/api/trackApi.ts';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useCallback } from 'react';
-import TogglePlayback from '@features/player-controls/ui/toggle-playback/TogglePlayback.tsx';
 import type { Track } from '@entities/track/types.ts';
-import DurationChange from '@features/duration-change/ui/DurationChange.tsx';
+import { DurationChange } from '@features/duration-change';
+import { TogglePlayback } from '@features/player-controls';
 
 export const useInitFavoriteSectionWidget = () => {
   const { artists: rawArtists, tracks: rawTracks } = useAppSelector(getFavoriteList);

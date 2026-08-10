@@ -1,5 +1,5 @@
 import { useGetArtistsQuery } from '@entities/artist/api/artistApi.ts';
-import { deriveTopArtists } from '@entities/artist/model/utils/deriveTopArtists.ts';
+import { deriveTopArtists } from '@entities/artist/model/deriveTopArtists.ts';
 import { useParams } from 'react-router-dom';
 import { useMemo } from 'react';
 

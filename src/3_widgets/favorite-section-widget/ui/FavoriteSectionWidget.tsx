@@ -1,13 +1,13 @@
 import React from 'react';
 import classes from '@widgets/favorite-section-widget/ui/FavoriteSectionWidget.module.scss';
-import ArtistSlider from '@entities/artist/ui/artist-slider/ArtistSlider.tsx';
-import TrackList from '@entities/track/ui/tracks/track-list/TrackList.tsx';
 import { useInitFavoriteSectionWidget } from '@widgets/favorite-section-widget/model/useInitFavoriteSectionWidget.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import FavoriteSectionSkeleton from '@shared/ui/skeletons/favorite-section-skeleton/FavoriteSectionSkeleton.tsx';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { TrackList } from '@entities/track';
+import { ArtistSlider } from '@entities/artist';
 
 const FavoriteSectionWidget: React.FC = () => {
   const {

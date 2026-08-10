@@ -2,11 +2,11 @@ import React from 'react';
 import classes from '@pages/settings-page/ui/SettingsPage.module.scss';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import ToggleLang from '@features/toggle-lang/ui/ToggleLang.tsx';
 import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
-import ClearHistory from '@features/clear-history/ui/ClearHistory.tsx';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import { ClearHistory } from '@features/clear-history';
+import { ToggleLang } from '@features/toggle-lang';
 
 const SettingsPage: React.FC = () => {
   useToggleTitle('Music Pulse | Settings');

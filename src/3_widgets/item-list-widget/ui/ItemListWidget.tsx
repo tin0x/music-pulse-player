@@ -1,16 +1,16 @@
 import React from 'react';
-import ArtistList from '@entities/artist/ui/artist-list/ArtistList.tsx';
 import { useInitItemListWidget } from '@widgets/item-list-widget/model/useInitItemListWidget.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import type { ArtistProfile } from '@entities/artist/types.ts';
 import type { ItemListWidgetProps } from '@widgets/item-list-widget/types.ts';
-import TrackList from '@entities/track/ui/tracks/track-list/TrackList.tsx';
 import type { Track } from '@entities/track/types.ts';
 import TopTracksSkeleton from '@shared/ui/skeletons/top-tracks-skeleton/TopTracksSkeleton.tsx';
 import ItemListSkeleton from '@shared/ui/skeletons/item-list-skeleton/ItemListSkeleton.tsx';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { TrackList } from '@entities/track';
+import { ArtistList } from '@entities/artist';
 
 const ItemListWidget: React.FC<ItemListWidgetProps> = ({ paramType }) => {
   const {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTogglePlayback } from '@features/player-controls/model/useTogglePlayback.ts';
-import ButtonTogglePlayback from '@entities/player/ui/button-toggle-playback/ButtonTogglePlayback.tsx';
 import type { TogglePlaybackProps } from '@features/player-controls/types.ts';
+import { ButtonTogglePlayback } from '@entities/player';
 
 const TogglePlayback: React.FC<TogglePlaybackProps> = React.memo(({ className, track, playerContext }) => {
   const { handleTogglePlayback, isPlaying, isBuffering, currentTrackId } = useTogglePlayback(track, playerContext);

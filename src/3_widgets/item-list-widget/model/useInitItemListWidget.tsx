@@ -4,9 +4,9 @@ import { useGetTracksByIdsQuery } from '@entities/track/api/trackApi.ts';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentTrackId, getFavoriteList, getIsBuffering, getIsPlaying } from '@entities/player/model/selectors.ts';
 import { useCallback, useMemo } from 'react';
-import TogglePlayback from '@features/player-controls/ui/toggle-playback/TogglePlayback.tsx';
 import type { Track } from '@entities/track/types.ts';
-import DurationChange from '@features/duration-change/ui/DurationChange.tsx';
+import { DurationChange } from '@features/duration-change';
+import { TogglePlayback } from '@features/player-controls';
 
 export const useInitItemListWidget = (paramType: string) => {
   const favoriteList = useAppSelector(getFavoriteList);

@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import classes from '@app/layout/ui/Layout.module.scss';
-import HeaderWidget from '@widgets/header-widget/ui/HeaderWidget.tsx';
-import FooterWidget from '@widgets/footer-widget/ui/FooterWidget.tsx';
-import AsideWidget from '@widgets/aside-widget/ui/AsideWidget.tsx';
-import MainWidget from '@widgets/main-widget/ui/MainWidget.tsx';
-import ProfileCardWidget from '@widgets/profile-card-widget/ui/ProfileCardWidget.tsx';
 import Logo from '@shared/ui/logo/Logo.tsx';
-import NavigationWidget from '@widgets/navigation-widget/ui/NavigationWidget.tsx';
 import IconLogo from '@shared/assets/icons/logo.svg?react';
 import VersionInfo from '@shared/ui/version-info/VersionInfo.tsx';
-import MessageCardWidget from '@widgets/message-card-widget/ui/MessageCardWidget.tsx';
-import TopArtistsWidget from '@widgets/top-artists-widget/ui/TopArtistsWidget.tsx';
-import RecentlyPlayedWidget from '@widgets/recently-played-widget/ui/RecentlyPlayedWidget.tsx';
-import PlayerBarWidget from '@widgets/player-bar-widget/ui/PlayerBarWidget.tsx';
-import HistoryControls from '@features/toggle-app-history/ui/history-controls/HistoryControls.tsx';
 import LogoContainer from '@shared/ui/logo-container/LogoContainer.tsx';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
@@ -23,6 +12,17 @@ import Button from '@shared/ui/button/Button.tsx';
 import IconClose from '@shared/assets/icons/close.svg?react';
 import clsx from 'clsx';
 import Copyright from '@shared/ui/copyright/Copyright.tsx';
+import { HistoryControls } from '@features/toggle-app-history';
+import { AsideWidget } from '@widgets/aside-widget';
+import { FooterWidget } from '@widgets/footer-widget';
+import { HeaderWidget } from '@widgets/header-widget';
+import { MainWidget } from '@widgets/main-widget';
+import { MessageCardWidget } from '@widgets/message-card-widget';
+import { NavigationWidget } from '@widgets/navigation-widget';
+import { PlayerBarWidget } from '@widgets/player-bar-widget';
+import { ProfileCardWidget } from '@widgets/profile-card-widget';
+import { RecentlyPlayedWidget } from '@widgets/recently-played-widget';
+import { TopArtistsWidget } from '@widgets/top-artists-widget';
 
 const Layout: React.FC = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState(() => window.innerWidth >= 1600);

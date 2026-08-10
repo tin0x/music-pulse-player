@@ -148,7 +148,7 @@ export type ButtonLoopListProps = {
   isActive: boolean;
 };
 
-export type ButtonRandomSelection = {
+export type ButtonRandomSelectionProps = {
   onClick: () => void;
   isActive: boolean;
 };
