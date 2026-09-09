@@ -1,4 +1,10 @@
-# 🎵 Music Pulse - Player
+<h1 align="center">
+    <img src="/public/favicon.svg" alt="Music Pulse - Player Logo" width="100">
+    <br>
+    <p> Music Pulse - Player</p>
+</h1>
+
+---
 
 Music Pulse is a cutting-edge, high-performance music streaming web application built using the latest stable React ecosystem. Featuring a premium dark mode design with neon violet highlights, it offers full-scale audio playback management, dynamic data fetching, precise type safety, and responsive layouts tailored for modern web browsers.
 
@@ -13,6 +19,27 @@ The project strictly adheres to **Feature-Sliced Design (FSD)** architecture pri
 - **Deployed App:** [Link to Vercel](https://music-pulse-player.vercel.app/)
 - **Design Core:** UI/UX concept inspired by [Figma Community](https://www.figma.com/community/file/1255801381916515982/music-1-music-dashboard)
 - **Data Source:** Powered by [Audius API](https://docs.audius.co/api/)
+
+---
+
+## Screenshots
+
+<p align="center">
+    <img src="./screenshots/screenshot-1.webp" alt="Home Page">
+</p>
+
+<p align="center">
+    <img src="./screenshots/screenshot-2.webp" alt="Album Page">
+</p>
+
+<p align="center">
+    <img src="./screenshots/screenshot-3.webp" alt="Track Page">
+</p>
+
+<p align="center">
+    <img src="./screenshots/screenshot-4.webp" alt="Settings Page">
+</p>
+
 
 ---
 

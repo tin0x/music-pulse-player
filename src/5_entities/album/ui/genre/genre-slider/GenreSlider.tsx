@@ -42,5 +42,3 @@ const GenreSlider: React.FC<GenreSliderProps> = ({ className, lang }) => {
 };
 
 export default GenreSlider;
-
-// &content=all
