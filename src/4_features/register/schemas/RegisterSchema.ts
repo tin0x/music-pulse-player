@@ -6,8 +6,8 @@ export const RegisterSchema = z
       .string()
       .min(3)
       .max(16)
-      .regex(/^[a-z0-9]+$/i),
-    email: z.string().email(),
+      .regex(/^[a-z0-9-_\s]+$/i),
+    email: z.email(),
     password: z
       .string()
       .min(8)

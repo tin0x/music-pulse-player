@@ -20,7 +20,7 @@ const RegisterForm: React.FC = () => {
     setError,
     setValue,
   } = useForm<FormUser>({
-    mode: 'onSubmit',
+    mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: zodResolver(RegisterSchema),
   });

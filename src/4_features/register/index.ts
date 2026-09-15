@@ -1,2 +1,2 @@
-export { default as ProtectedRoute } from './ui/ProtectedRoute.tsx'
-export { default as RegisterForm } from './ui/RegisterForm.tsx'
+export { default as ProtectedRoute } from '../../1_app/routers/ProtectedRoute.tsx';
+export { default as RegisterForm } from './ui/RegisterForm.tsx';

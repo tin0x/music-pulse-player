@@ -3,7 +3,11 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const ProtectedRoute: React.FC = () => {
-  const { isAuth } = useAuth();
+  const { isAuth, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   if (!isAuth) {
     return <Navigate to="/register" replace />;

@@ -1,12 +1,12 @@
-import React from 'react';
 import classes from '@pages/profile-page/ui/ProfilePage.module.scss';
-import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 import { BackgroundSectionWidget } from '@widgets/background-section-widget';
 import { ProfileInfoWidget } from '@widgets/profile-info-widget';
+import React from 'react';
 
 const ProfilePage: React.FC = () => {
-  useToggleTitle('Music Pulse | Profile');
+  useToggleTitle('Profile');
   useCleaningURL();
 
   return (

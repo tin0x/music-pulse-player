@@ -1,12 +1,12 @@
-import React from 'react';
-import classes from '@widgets/profile-info-widget/ui/ProfileInfoWidget.module.scss';
-import Avatar from '@shared/ui/avatar/Avatar.tsx';
-import { useInitProfileInfoWidget } from '@widgets/profile-info-widget/model/useInitProfileInfoWidget.ts';
-import Popup from '@shared/ui/popup/Popup.tsx';
-import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import { ButtonProfile } from '@entities/user';
 import { ChangeAvatar } from '@features/change-avatar';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import Avatar from '@shared/ui/avatar/Avatar.tsx';
+import Popup from '@shared/ui/popup/Popup.tsx';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import { useInitProfileInfoWidget } from '@widgets/profile-info-widget/model/useInitProfileInfoWidget.ts';
+import classes from '@widgets/profile-info-widget/ui/ProfileInfoWidget.module.scss';
+import React from 'react';
 
 const ProfileInfoWidget: React.FC = () => {
   const {
@@ -29,7 +29,7 @@ const ProfileInfoWidget: React.FC = () => {
         lang={lang}
         variant="clientError"
         alternativeMessage={messageForProfile}
-        onClick={() => navigate('/dashboard', { replace: true })}
+        onClick={() => navigate('/', { replace: true })}
       />
     );
   }

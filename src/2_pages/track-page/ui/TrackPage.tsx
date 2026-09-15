@@ -1,13 +1,13 @@
-import React from 'react';
-import classes from '@pages/track-page/ui/TrackPage.module.scss';
 import { useInitTrackPage } from '@pages/track-page/model/useInitTrackPage.ts';
-import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
+import classes from '@pages/track-page/ui/TrackPage.module.scss';
 import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 import { BackgroundSectionWidget } from '@widgets/background-section-widget';
 import { TrackInfoWidget } from '@widgets/track-info-widget';
+import React from 'react';
 
 const TrackPage: React.FC = () => {
-  useToggleTitle('Music Pulse | Track');
+  useToggleTitle('Track');
   const { trackIdParam } = useInitTrackPage();
   useCleaningURL();
 

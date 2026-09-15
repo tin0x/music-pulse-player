@@ -9,7 +9,7 @@ import { TopTracksWidget } from '@widgets/top-tracks-widget';
 import React from 'react';
 
 const DashboardPage: React.FC = () => {
-  useToggleTitle('Music Pulse | Dashboard');
+  useToggleTitle('Dashboard');
   useCleaningURL();
 
   const tracksLimitPerPage = 5;

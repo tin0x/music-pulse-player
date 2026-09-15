@@ -8,7 +8,7 @@ import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import React from 'react';
 
 const SettingsPage: React.FC = () => {
-  useToggleTitle('Music Pulse | Settings');
+  useToggleTitle('Settings');
   useCleaningURL();
 
   const { currentLanguage } = useLanguage();

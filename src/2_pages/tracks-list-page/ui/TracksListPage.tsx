@@ -1,12 +1,12 @@
-import React from 'react';
-import classes from '@pages/tracks-list-page/ui/TracksListPage.module.scss';
-import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 import { useInitTracksListPage } from '@pages/tracks-list-page/model/useInitTracksListPage.tsx';
+import classes from '@pages/tracks-list-page/ui/TracksListPage.module.scss';
 import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
 import { TopTracksWidget } from '@widgets/top-tracks-widget';
+import React from 'react';
 
 const TracksListPage: React.FC = () => {
-  useToggleTitle('Music Pulse | Top Music');
+  useToggleTitle('Top Music');
   const { type, itemsPerPage, t } = useInitTracksListPage();
   useCleaningURL();
 
