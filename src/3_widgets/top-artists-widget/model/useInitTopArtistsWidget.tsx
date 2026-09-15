@@ -1,17 +1,16 @@
-import { useCallback } from 'react';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import useLanguage from '@app/providers/language/useLanguage';
 import { ToggleFavorite } from '@features/toggle-favorite';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { useCallback } from 'react';
 
 export const useInitTopArtistsWidget = () => {
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   const renderActionToggleFavorite = useCallback(
     (userId: string) => <ToggleFavorite type="artist" id={userId} variantButton="text" />,
     [],
   );
 
-  return { lang, t, renderActionToggleFavorite };
+  return { lang: currentLanguage, t, renderActionToggleFavorite };
 };

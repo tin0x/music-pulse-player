@@ -1,16 +1,15 @@
-import React from 'react';
-import classes from '@widgets/artist-info-widget/ui/ArtistInfoWidget.module.scss';
-import type { ArtistInfoWidgetProps } from '@widgets/artist-info-widget/types.ts';
-import { useInitArtistInfoWidget } from '@widgets/artist-info-widget/model/useInitArtistInfoWidget.tsx';
-import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import { usePagination } from '@features/pagination-controls/model/usePagination.ts';
-import ArtistDescriptionSkeleton from '@shared/ui/skeletons/artist-description-skeleton/ArtistDescriptionSkeleton.tsx';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
-import { TrackList } from '@entities/track';
+import useLanguage from '@app/providers/language/useLanguage';
 import { ArtistDescription } from '@entities/artist';
+import { TrackList } from '@entities/track';
 import { PageSwitcher } from '@features/pagination-controls';
+import { usePagination } from '@features/pagination-controls/model/usePagination.ts';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import ArtistDescriptionSkeleton from '@shared/ui/skeletons/artist-description-skeleton/ArtistDescriptionSkeleton.tsx';
+import { useInitArtistInfoWidget } from '@widgets/artist-info-widget/model/useInitArtistInfoWidget.tsx';
+import type { ArtistInfoWidgetProps } from '@widgets/artist-info-widget/types.ts';
+import classes from '@widgets/artist-info-widget/ui/ArtistInfoWidget.module.scss';
+import React from 'react';
 
 const ArtistInfoWidget: React.FC<ArtistInfoWidgetProps> = ({ artistIdParam, pageParam, limitParam }) => {
   const {
@@ -40,24 +39,28 @@ const ArtistInfoWidget: React.FC<ArtistInfoWidgetProps> = ({ artistIdParam, page
     handleTargetPage,
   } = usePagination(totalTracks);
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   if (isLoading) {
     return <ArtistDescriptionSkeleton quantityTracks={10} />;
   }
 
   if (isError) {
-    return <QueryPlaceholder lang={lang} variant="queryError" onClick={handleRefetch} />;
+    return <QueryPlaceholder lang={currentLanguage} variant="queryError" onClick={handleRefetch} />;
   }
 
   if (!artist || !tracks || tracks.length === 0) {
-    return <QueryPlaceholder lang={lang} variant="empty" />;
+    return <QueryPlaceholder lang={currentLanguage} variant="empty" />;
   }
 
   return (
     <div className={classes.artistInfo}>
-      <ArtistDescription artist={artist} renderActionToggleFavorite={renderActionToggleFavorite} lang={lang} />
+      <ArtistDescription
+        artist={artist}
+        renderActionToggleFavorite={renderActionToggleFavorite}
+        lang={currentLanguage}
+      />
       <TrackList
         subtitle={t.str.titleArtist}
         tracks={tracks}
@@ -68,7 +71,7 @@ const ArtistInfoWidget: React.FC<ArtistInfoWidgetProps> = ({ artistIdParam, page
         currentPage={pageParam}
         tracksLimitPerPage={limitParam}
         renderAction={renderTrackAction}
-        lang={lang}
+        lang={currentLanguage}
       />
       <PageSwitcher
         className={classes.artistInfoPageSwitcher}

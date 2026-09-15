@@ -1,19 +1,17 @@
-import React from 'react';
-import ItemsContainer from '@shared/ui/items-container/ItemsContainer.tsx';
 import ArtistItem from '@entities/artist/ui/artist-item/ArtistItem.tsx';
-import { useFetchArtists } from '@widgets/top-artists-widget/model/useFetchArtists.ts';
-import classes from '@widgets/top-artists-widget/ui/TopArtistsWidget.module.scss';
-import { useIsAuth } from '@features/auth/model/hooks/useFetchToken.ts';
-import ArtistBlockSkeleton from '@shared/ui/skeletons/artist-block-skeleton/ArtistBlockSkeleton.tsx';
+import ItemsContainer from '@shared/ui/items-container/ItemsContainer.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import ArtistBlockSkeleton from '@shared/ui/skeletons/artist-block-skeleton/ArtistBlockSkeleton.tsx';
+import { useFetchArtists } from '@widgets/top-artists-widget/model/useFetchArtists.ts';
 import { useInitTopArtistsWidget } from '@widgets/top-artists-widget/model/useInitTopArtistsWidget.tsx';
+import classes from '@widgets/top-artists-widget/ui/TopArtistsWidget.module.scss';
+import React from 'react';
 
 const TopArtistsWidget: React.FC = () => {
   const { sortedArtists: artists, isLoading, error, refetch, isFetching, artistIdParam } = useFetchArtists(100);
   const { lang, t, renderActionToggleFavorite } = useInitTopArtistsWidget();
-  const { isAuth } = useIsAuth();
 
-  if (!isAuth || isLoading || isFetching) {
+  if (isLoading || isFetching) {
     return <ArtistBlockSkeleton />;
   }
 

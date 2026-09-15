@@ -4,8 +4,7 @@
 @import 'react-loading-skeleton/dist/skeleton.css';
 
 html,
-body,
-#root {
+body {
   height: 100%;
 }
 
@@ -28,6 +27,10 @@ html {
     background-color: var(--color-accent);
     border-radius: var(--radius-circle);
   }
+}
+
+#root {
+  min-height: 100dvh;
 }
 
 body {

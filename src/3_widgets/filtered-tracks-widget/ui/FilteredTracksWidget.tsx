@@ -1,17 +1,16 @@
-import React from 'react';
-import classes from '@widgets/filtered-tracks-widget/ui/FilteredTracksWidget.module.scss';
-import { useFetchTracksByGenre } from '@widgets/filtered-tracks-widget/model/useFetchTracksByGenre.ts';
-import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import type { TopGenreWidgetProps } from '@widgets/filtered-tracks-widget/types.ts';
-import { useInitFilteredTracksWidget } from '@widgets/filtered-tracks-widget/model/useInitFilteredTracksWidget.tsx';
-import { usePagination } from '@features/pagination-controls/model/usePagination.ts';
-import FilteredTracksSkeleton from '@shared/ui/skeletons/filtered-tracks-skeleton/FilteredTracksSkeleton.tsx';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import useLanguage from '@app/providers/language/useLanguage';
 import { TrackList } from '@entities/track';
 import { PageSwitcher } from '@features/pagination-controls';
+import { usePagination } from '@features/pagination-controls/model/usePagination.ts';
 import { SortingSelect } from '@features/sorting-select';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import FilteredTracksSkeleton from '@shared/ui/skeletons/filtered-tracks-skeleton/FilteredTracksSkeleton.tsx';
+import { useFetchTracksByGenre } from '@widgets/filtered-tracks-widget/model/useFetchTracksByGenre.ts';
+import { useInitFilteredTracksWidget } from '@widgets/filtered-tracks-widget/model/useInitFilteredTracksWidget.tsx';
+import type { TopGenreWidgetProps } from '@widgets/filtered-tracks-widget/types.ts';
+import classes from '@widgets/filtered-tracks-widget/ui/FilteredTracksWidget.module.scss';
+import React from 'react';
 
 const FilteredTracksWidget: React.FC<TopGenreWidgetProps> = ({
   genre,
@@ -43,19 +42,19 @@ const FilteredTracksWidget: React.FC<TopGenreWidgetProps> = ({
     moodParam,
   });
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   if (isLoading || isFetching) {
     return <FilteredTracksSkeleton />;
   }
 
   if (data?.length === 0) {
-    return <QueryPlaceholder lang={lang} variant="empty" />;
+    return <QueryPlaceholder lang={currentLanguage} variant="empty" />;
   }
 
   if (error) {
-    return <QueryPlaceholder lang={lang} variant="queryError" onClick={refetch} />;
+    return <QueryPlaceholder lang={currentLanguage} variant="queryError" onClick={refetch} />;
   }
 
   return (
@@ -72,7 +71,7 @@ const FilteredTracksWidget: React.FC<TopGenreWidgetProps> = ({
         renderDuration={renderDurationChange}
         currentPage={currentPage}
         tracksLimitPerPage={tracksLimitPerPage}
-        lang={lang}
+        lang={currentLanguage}
       />
       <PageSwitcher
         className={classes.filteredTracksPageSwitcher}

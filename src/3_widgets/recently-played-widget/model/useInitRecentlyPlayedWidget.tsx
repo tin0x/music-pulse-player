@@ -1,15 +1,15 @@
-import { useCallback } from 'react';
-import type { Track } from '@entities/track/types.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
+import useLanguage from '@app/providers/language/useLanguage';
 import { getRecentlyPlayedTracks } from '@entities/player/model/selectors.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import type { Track } from '@entities/track/types.ts';
 import { TogglePlayback } from '@features/player-controls';
+import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { useCallback } from 'react';
 
 export const useInitRecentlyPlayedWidget = () => {
   const playedTracks = useAppSelector(getRecentlyPlayedTracks);
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   const renderTogglePlayback = useCallback(
     (track: Track) => {
@@ -38,5 +38,5 @@ export const useInitRecentlyPlayedWidget = () => {
     [playedTracks],
   );
 
-  return { lang, t, renderTogglePlayback };
+  return { lang: currentLanguage, t, renderTogglePlayback };
 };

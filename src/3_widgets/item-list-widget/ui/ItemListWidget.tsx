@@ -1,16 +1,15 @@
-import React from 'react';
-import { useInitItemListWidget } from '@widgets/item-list-widget/model/useInitItemListWidget.tsx';
-import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import type { ArtistProfile } from '@entities/artist/types.ts';
-import type { ItemListWidgetProps } from '@widgets/item-list-widget/types.ts';
-import type { Track } from '@entities/track/types.ts';
-import TopTracksSkeleton from '@shared/ui/skeletons/top-tracks-skeleton/TopTracksSkeleton.tsx';
-import ItemListSkeleton from '@shared/ui/skeletons/item-list-skeleton/ItemListSkeleton.tsx';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
-import { TrackList } from '@entities/track';
+import useLanguage from '@app/providers/language/useLanguage';
 import { ArtistList } from '@entities/artist';
+import type { ArtistProfile } from '@entities/artist/types.ts';
+import { TrackList } from '@entities/track';
+import type { Track } from '@entities/track/types.ts';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import ItemListSkeleton from '@shared/ui/skeletons/item-list-skeleton/ItemListSkeleton.tsx';
+import TopTracksSkeleton from '@shared/ui/skeletons/top-tracks-skeleton/TopTracksSkeleton.tsx';
+import { useInitItemListWidget } from '@widgets/item-list-widget/model/useInitItemListWidget.tsx';
+import type { ItemListWidgetProps } from '@widgets/item-list-widget/types.ts';
+import React from 'react';
 
 const ItemListWidget: React.FC<ItemListWidgetProps> = ({ paramType }) => {
   const {
@@ -25,8 +24,8 @@ const ItemListWidget: React.FC<ItemListWidgetProps> = ({ paramType }) => {
     renderDurationChange,
   } = useInitItemListWidget(paramType);
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   if (isLoading && paramType === 'tracks') {
     return <TopTracksSkeleton quantityTracks={10} />;
@@ -37,11 +36,11 @@ const ItemListWidget: React.FC<ItemListWidgetProps> = ({ paramType }) => {
   }
 
   if (isError) {
-    return <QueryPlaceholder lang={lang} variant="empty" onClick={refetch} />;
+    return <QueryPlaceholder lang={currentLanguage} variant="empty" onClick={refetch} />;
   }
 
   if (paramType === 'artists') {
-    return <ArtistList artists={array as ArtistProfile[]} lang={lang} />;
+    return <ArtistList artists={array as ArtistProfile[]} lang={currentLanguage} />;
   }
 
   if (paramType === 'tracks') {
@@ -54,7 +53,7 @@ const ItemListWidget: React.FC<ItemListWidgetProps> = ({ paramType }) => {
         currentTrackId={currentTrackId || ''}
         renderDuration={renderDurationChange}
         renderAction={renderAction}
-        lang={lang}
+        lang={currentLanguage}
       />
     );
   }

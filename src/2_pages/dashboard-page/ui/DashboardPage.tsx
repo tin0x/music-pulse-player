@@ -1,13 +1,12 @@
-import React from 'react';
-import classes from '@pages/dashboard-page/ui/DashboardPage.module.scss';
-import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
-import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import useLanguage from '@app/providers/language/useLanguage';
 import { GenreSlider } from '@entities/album';
+import classes from '@pages/dashboard-page/ui/DashboardPage.module.scss';
+import { useCleaningURL } from '@shared/lib/hooks/router/useCleaningURL.ts';
+import { useToggleTitle } from '@shared/lib/hooks/ui/useToggleTitle.ts';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import { SearchKeywordWidget } from '@widgets/search-keyword-widget';
 import { TopTracksWidget } from '@widgets/top-tracks-widget';
+import React from 'react';
 
 const DashboardPage: React.FC = () => {
   useToggleTitle('Music Pulse | Dashboard');
@@ -15,14 +14,14 @@ const DashboardPage: React.FC = () => {
 
   const tracksLimitPerPage = 5;
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   return (
     <section className={classes.dashboard}>
       <div className={classes.dashboardWrapper}>
         <SearchKeywordWidget />
-        <GenreSlider className={classes.dashboardGenreSlider} lang={lang} />
+        <GenreSlider className={classes.dashboardGenreSlider} lang={currentLanguage} />
         <TopTracksWidget
           className={classes.dashboardTopTracks}
           subtitle={t.str.titleTopMusic}

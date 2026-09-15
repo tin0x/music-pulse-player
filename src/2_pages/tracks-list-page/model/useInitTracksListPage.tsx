@@ -1,13 +1,12 @@
-import { useParams } from 'react-router-dom';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
+import useLanguage from '@app/providers/language/useLanguage';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import { useParams } from 'react-router-dom';
 
 export const useInitTracksListPage = () => {
   const { type } = useParams<{ type: string }>();
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   const itemsPerPage = 50;
 

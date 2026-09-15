@@ -1,14 +1,13 @@
-import React from 'react';
-import classes from '@widgets/top-tracks-widget/ui/TopTracksWidget.module.scss';
-import { useFetchTrendingTracks } from '@widgets/top-tracks-widget/model/useFetchTrendingTracks.ts';
-import clsx from 'clsx';
-import TopTracksSkeleton from '@shared/ui/skeletons/top-tracks-skeleton/TopTracksSkeleton.tsx';
-import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import type { TopTracksWidgetProps } from '@widgets/top-tracks-widget/types.ts';
-import { useInitTopTracksWidget } from '@widgets/top-tracks-widget/model/useInitTopTracksWidget.tsx';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
+import useLanguage from '@app/providers/language/useLanguage';
 import { TrackList } from '@entities/track';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import TopTracksSkeleton from '@shared/ui/skeletons/top-tracks-skeleton/TopTracksSkeleton.tsx';
+import { useFetchTrendingTracks } from '@widgets/top-tracks-widget/model/useFetchTrendingTracks.ts';
+import { useInitTopTracksWidget } from '@widgets/top-tracks-widget/model/useInitTopTracksWidget.tsx';
+import type { TopTracksWidgetProps } from '@widgets/top-tracks-widget/types.ts';
+import classes from '@widgets/top-tracks-widget/ui/TopTracksWidget.module.scss';
+import clsx from 'clsx';
+import React from 'react';
 
 const TopTracksWidget: React.FC<TopTracksWidgetProps> = ({
   className,
@@ -27,18 +26,18 @@ const TopTracksWidget: React.FC<TopTracksWidgetProps> = ({
     tracksLimitPerPage ?? 5,
   );
 
-  const lang = useAppSelector(getCurrentLanguage);
+  const { currentLanguage } = useLanguage();
 
   if (isLoading || isFetching) {
     return <TopTracksSkeleton className={className} isShowLink={isLinkShowMore} quantityTracks={tracksLimitPerPage} />;
   }
 
   if (error) {
-    return <QueryPlaceholder lang={lang} className={className} variant="queryError" onClick={refetch} />;
+    return <QueryPlaceholder lang={currentLanguage} className={className} variant="queryError" onClick={refetch} />;
   }
 
   if (!tracks || tracks.length === 0) {
-    return <QueryPlaceholder lang={lang} className={className} variant="empty" />;
+    return <QueryPlaceholder lang={currentLanguage} className={className} variant="empty" />;
   }
 
   return (
@@ -53,7 +52,7 @@ const TopTracksWidget: React.FC<TopTracksWidgetProps> = ({
       isBuffering={isBuffering}
       currentTrackId={currentTrackId ?? ''}
       pathTo="/tracks/trending"
-      lang={lang}
+      lang={currentLanguage}
     />
   );
 };

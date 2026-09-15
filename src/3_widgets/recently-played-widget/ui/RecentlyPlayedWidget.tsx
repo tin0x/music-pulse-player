@@ -1,14 +1,12 @@
-import React from 'react';
-import { useFetchRecentlyPlayedTracks } from '@widgets/recently-played-widget/model/useFetchRecentlyPlayedTracks.ts';
+import { RecentlyPlayedList } from '@entities/track';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import RecentlyPlayedSkeleton from '@shared/ui/skeletons/recently-played-skeleton/RecentlyPlayedSkeleton.tsx';
+import { useFetchRecentlyPlayedTracks } from '@widgets/recently-played-widget/model/useFetchRecentlyPlayedTracks.ts';
 import { useInitRecentlyPlayedWidget } from '@widgets/recently-played-widget/model/useInitRecentlyPlayedWidget.tsx';
-import { useIsAuth } from '@features/auth/model/hooks/useFetchToken.ts';
-import { RecentlyPlayedList } from '@entities/track';
+import React from 'react';
 
 const RecentlyPlayedWidget: React.FC = () => {
   const { lang, renderTogglePlayback } = useInitRecentlyPlayedWidget();
-  const { isAuth } = useIsAuth();
   const {
     data: playedTracks,
     isLoading,
@@ -19,7 +17,7 @@ const RecentlyPlayedWidget: React.FC = () => {
     isPlaying,
   } = useFetchRecentlyPlayedTracks();
 
-  if (isLoading || !isAuth) {
+  if (isLoading) {
     return <RecentlyPlayedSkeleton />;
   }
 

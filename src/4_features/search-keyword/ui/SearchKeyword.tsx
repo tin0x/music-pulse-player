@@ -1,18 +1,17 @@
-import React from 'react';
-import Input from '@shared/ui/input/Input.tsx';
-import IconSearch from '@shared/assets/icons/search.svg?react';
-import IconLoader from '@shared/assets/icons/loader.svg?react';
+import useLanguage from '@app/providers/language/useLanguage';
 import { useSearchKeyword } from '@features/search-keyword/model/useSearchKeyword.ts';
 import type { SearchKeywordProps } from '@features/search-keyword/types.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
+import IconLoader from '@shared/assets/icons/loader.svg?react';
+import IconSearch from '@shared/assets/icons/search.svg?react';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import Input from '@shared/ui/input/Input.tsx';
+import React from 'react';
 
 const SearchKeyword: React.FC<SearchKeywordProps> = ({ setValue, value, isLoading }) => {
   const { handleSearchKeyword } = useSearchKeyword(setValue);
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   return (
     <Input

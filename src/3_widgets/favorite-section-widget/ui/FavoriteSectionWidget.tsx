@@ -1,13 +1,12 @@
-import React from 'react';
-import classes from '@widgets/favorite-section-widget/ui/FavoriteSectionWidget.module.scss';
-import { useInitFavoriteSectionWidget } from '@widgets/favorite-section-widget/model/useInitFavoriteSectionWidget.tsx';
+import useLanguage from '@app/providers/language/useLanguage';
+import { ArtistSlider } from '@entities/artist';
+import { TrackList } from '@entities/track';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import FavoriteSectionSkeleton from '@shared/ui/skeletons/favorite-section-skeleton/FavoriteSectionSkeleton.tsx';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
-import { TrackList } from '@entities/track';
-import { ArtistSlider } from '@entities/artist';
+import { useInitFavoriteSectionWidget } from '@widgets/favorite-section-widget/model/useInitFavoriteSectionWidget.tsx';
+import classes from '@widgets/favorite-section-widget/ui/FavoriteSectionWidget.module.scss';
+import React from 'react';
 
 const FavoriteSectionWidget: React.FC = () => {
   const {
@@ -25,25 +24,35 @@ const FavoriteSectionWidget: React.FC = () => {
     renderDurationChange,
   } = useInitFavoriteSectionWidget();
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   if (isLoading) {
     return <FavoriteSectionSkeleton />;
   }
 
   if (isError) {
-    return <QueryPlaceholder lang={lang} variant="queryError" onClick={handleRefetch} />;
+    return <QueryPlaceholder lang={currentLanguage} variant="queryError" onClick={handleRefetch} />;
   }
 
   if ((!artists || artists.length === 0) && (!tracks || tracks.length === 0)) {
-    return <QueryPlaceholder lang={lang} variant="empty" alternativeMessage={messagePlaceholder[lang].all} />;
+    return (
+      <QueryPlaceholder
+        lang={currentLanguage}
+        variant="empty"
+        alternativeMessage={messagePlaceholder[currentLanguage].all}
+      />
+    );
   }
 
   if ((!artists || artists.length === 0) && tracks && tracks.length > 0) {
     return (
       <div className={classes.favoriteSection}>
-        <QueryPlaceholder lang={lang} variant="empty" alternativeMessage={messagePlaceholder[lang].artist} />
+        <QueryPlaceholder
+          lang={currentLanguage}
+          variant="empty"
+          alternativeMessage={messagePlaceholder[currentLanguage].artist}
+        />
         <TrackList
           tracks={tracks}
           isPlaying={isPlaying}
@@ -52,7 +61,7 @@ const FavoriteSectionWidget: React.FC = () => {
           renderDuration={renderDurationChange}
           renderAction={renderAction}
           limitTracks={limitTracks}
-          lang={lang}
+          lang={currentLanguage}
         />
       </div>
     );
@@ -61,15 +70,19 @@ const FavoriteSectionWidget: React.FC = () => {
   if ((!tracks || tracks.length === 0) && artists && artists.length > 0) {
     return (
       <div className={classes.favoriteSection}>
-        <ArtistSlider artists={artists} lang={lang} />
-        <QueryPlaceholder lang={lang} variant="empty" alternativeMessage={messagePlaceholder[lang].track} />
+        <ArtistSlider artists={artists} lang={currentLanguage} />
+        <QueryPlaceholder
+          lang={currentLanguage}
+          variant="empty"
+          alternativeMessage={messagePlaceholder[currentLanguage].track}
+        />
       </div>
     );
   }
 
   return (
     <div className={classes.favoriteSection}>
-      <ArtistSlider artists={artists || []} lang={lang} />
+      <ArtistSlider artists={artists || []} lang={currentLanguage} />
       <TrackList
         subtitle={t.str.titleTracksFavorite}
         isLinkShowMore={tracks && tracks.length > 10}
@@ -81,7 +94,7 @@ const FavoriteSectionWidget: React.FC = () => {
         renderDuration={renderDurationChange}
         renderAction={renderAction}
         limitTracks={limitTracks}
-        lang={lang}
+        lang={currentLanguage}
       />
     </div>
   );

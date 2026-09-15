@@ -1,10 +1,9 @@
-import { useSearchParams } from 'react-router-dom';
+import useLanguage from '@app/providers/language/useLanguage';
 import type { TracksByGenreArgs } from '@entities/album/types.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
+import { genres, type GenreType, moodParams, sortingParams } from '@pages/album-page/model/constants.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import { useEffect } from 'react';
-import { genres, type GenreType, moodParams, sortingParams } from '@pages/album-page/model/constants.ts';
+import { useSearchParams } from 'react-router-dom';
 
 export const useInitAlbumPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,8 +18,8 @@ export const useInitAlbumPage = () => {
   const currentMood = mood && moodParams.includes(mood as TracksByGenreArgs['moodParam']) ? mood : 'other';
   const currentPage = page && parseInt(page) <= 30 && parseInt(page) >= 1 ? parseInt(page) : 1;
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   useEffect(() => {
     const PARAMS_KEYS = ['genre', 'sort', 'mood', 'page'];

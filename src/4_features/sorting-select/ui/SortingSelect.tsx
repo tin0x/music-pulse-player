@@ -1,17 +1,16 @@
-import React from 'react';
-import classes from '@features/sorting-select/ui/SortingSelect.module.scss';
-import clsx from 'clsx';
-import type { SortingSelectProps } from '@features/sorting-select/types.ts';
+import useLanguage from '@app/providers/language/useLanguage';
 import { useFilterTracks } from '@features/sorting-select/model/useFilterTracks.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
+import type { SortingSelectProps } from '@features/sorting-select/types.ts';
+import classes from '@features/sorting-select/ui/SortingSelect.module.scss';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import clsx from 'clsx';
+import React from 'react';
 
 const SortingSelect: React.FC<SortingSelectProps> = ({ className }) => {
   const { handleUpdateFilter, currentSort, currentMood } = useFilterTracks();
 
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   return (
     <form className={clsx(className, classes.sortingSelect)}>

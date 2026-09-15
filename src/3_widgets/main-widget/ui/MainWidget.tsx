@@ -1,15 +1,14 @@
-import React from 'react';
-import classes from '@widgets/main-widget/ui/MainWidget.module.scss';
-import Toast from '@shared/ui/toast/Toast.tsx';
-import { useCheckStatusOffline } from '@widgets/main-widget/model/useCheckStatusOffline.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import type { MainWidgetProps } from '@widgets/main-widget/types.ts';
-import Button from '@shared/ui/button/Button.tsx';
+import useLanguage from '@app/providers/language/useLanguage';
+import { HistoryControls } from '@features/toggle-app-history';
 import IconBurger from '@shared/assets/icons/burger.svg?react';
 import IconAside from '@shared/assets/icons/sidebar.svg?react';
+import Button from '@shared/ui/button/Button.tsx';
+import Toast from '@shared/ui/toast/Toast.tsx';
+import { useCheckStatusOffline } from '@widgets/main-widget/model/useCheckStatusOffline.ts';
+import type { MainWidgetProps } from '@widgets/main-widget/types.ts';
+import classes from '@widgets/main-widget/ui/MainWidget.module.scss';
 import clsx from 'clsx';
-import { HistoryControls } from '@features/toggle-app-history';
+import React from 'react';
 
 const MainWidget: React.FC<MainWidgetProps> = ({
   isHeaderOpen,
@@ -20,7 +19,7 @@ const MainWidget: React.FC<MainWidgetProps> = ({
 }) => {
   const { isOffline } = useCheckStatusOffline();
 
-  const lang = useAppSelector(getCurrentLanguage);
+  const { currentLanguage } = useLanguage();
 
   return (
     <main className={classes.main} data-offline={isOffline}>
@@ -46,7 +45,7 @@ const MainWidget: React.FC<MainWidgetProps> = ({
         </div>
       </div>
       <div className={classes.mainToastWrapper}>
-        <Toast lang={lang} isActive={isOffline} type="internet" />
+        <Toast lang={currentLanguage} isActive={isOffline} type="internet" />
       </div>
       <div className={classes.mainScrollableContent}>{children}</div>
     </main>

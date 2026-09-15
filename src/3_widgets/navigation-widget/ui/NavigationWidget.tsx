@@ -1,16 +1,15 @@
-import React from 'react';
+import useLanguage from '@app/providers/language/useLanguage';
+import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import NavigationWrapper from '@shared/ui/navigation-wrapper/NavigationWrapper.tsx';
-import { NavLink } from 'react-router-dom';
+import { dataNavigation } from '@widgets/navigation-widget/model/constants.ts';
 import classes from '@widgets/navigation-widget/ui/NavigationWidget.module.scss';
 import clsx from 'clsx';
-import { dataNavigation } from '@widgets/navigation-widget/model/constants.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentLanguage } from '@entities/user/model/selectors.ts';
-import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const NavigationWidget: React.FC = () => {
-  const lang = useAppSelector(getCurrentLanguage);
-  const t = getTranslate(lang);
+  const { currentLanguage } = useLanguage();
+  const t = getTranslate(currentLanguage);
 
   return (
     <div className={classes.navigation}>
