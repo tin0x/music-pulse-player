@@ -3,17 +3,14 @@ import type { FormUser } from '@features/register/schemas/RegisterSchema';
 import type { ApiError, UseRegisterFormArgs } from '@features/register/types';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 export const useRegisterForm = ({ setPreviewAvatar, setValue, setError, clearErrors }: UseRegisterFormArgs) => {
   const [register, { isLoading }] = useRegisterMutation();
-  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FormUser> = async (data) => {
     const { email, password, username, avatar } = data;
     try {
       await register({ email, password, username, avatar: avatar || null }).unwrap();
-      navigate('/', { replace: true });
     } catch (error) {
       const apiError = error as ApiError;
       setError('root.serverError', {

@@ -7,6 +7,7 @@ import { ArtistPage } from '@pages/artist-page';
 import { DashboardPage } from '@pages/dashboard-page';
 import { ErrorBoundaryPage } from '@pages/error-boundary-page';
 import { FavoritePage } from '@pages/favorite-page';
+import { LoginPage } from '@pages/login-page';
 import { NotFoundPage } from '@pages/not-found-page';
 import { ProfilePage } from '@pages/profile-page';
 import { RegisterPage } from '@pages/register-page';
@@ -74,6 +75,10 @@ const routes = createBrowserRouter([
           {
             path: '/register',
             element: <RegisterPage />,
+          },
+          {
+            path: '/login',
+            element: <LoginPage />,
           },
         ],
       },
