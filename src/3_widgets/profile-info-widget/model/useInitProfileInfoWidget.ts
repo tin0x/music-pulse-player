@@ -1,13 +1,20 @@
+import useAuth from '@app/providers/auth/useAuth';
 import useLanguage from '@app/providers/language/useLanguage';
 import { clearPlayer } from '@entities/player/model/playerSlice.ts';
 import { getFavoriteList } from '@entities/player/model/selectors.ts';
-import { getUser } from '@entities/user/model/selectors.ts';
+import { useGetUserInfoQuery } from '@entities/user';
+import { skipToken } from '@reduxjs/toolkit/query';
 import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch.ts';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const useInitProfileInfoWidget = () => {
+  const { session } = useAuth();
+  const userId = session?.user?.id;
+  const email = session?.user?.email;
+  const { data, isLoading, isError } = useGetUserInfoQuery(userId ? { userId } : skipToken);
+
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -25,7 +32,7 @@ export const useInitProfileInfoWidget = () => {
   const handleLogout = () => {
     dispatch(clearPlayer());
     setIsOpen(false);
-    navigate('/dashboard', { replace: true });
+    navigate('/', { replace: true });
   };
 
   const message =
@@ -37,10 +44,11 @@ export const useInitProfileInfoWidget = () => {
       ? 'There is no access to the account, please login!'
       : 'Немає доступу до облікового запису, будь ласка, увійдіть!';
 
-  const currentUser = useAppSelector(getUser);
-
   return {
-    currentUser,
+    currentUser: data,
+    isLoading,
+    isError,
+    email,
     quantityTracks,
     quantityArtists,
     message,

@@ -14,7 +14,7 @@ const ArtistTrackDTOSchema = z.object({
   user: z.object({
     id: z.string(),
     name: z.string(),
-    profile_picture: z.object({ '480x480': z.string().nullish() }),
+    profile_picture: z.object({ '480x480': z.string().nullish() }).nullish(),
     follower_count: z.number().nullish(),
     favorite_count: z.number().nullish(),
   }),

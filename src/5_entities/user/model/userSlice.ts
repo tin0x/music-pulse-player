@@ -2,9 +2,7 @@ import type { InitialState, MessagePayload } from '@entities/user/types.ts';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialState = {
-  user: null,
   messages: [],
-  language: 'en',
 };
 
 export const userSlice = createSlice({

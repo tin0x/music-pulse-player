@@ -1,9 +1,15 @@
+import useAuth from '@app/providers/auth/useAuth';
+import { useGetUserInfoQuery } from '@entities/user';
+import { getMessage } from '@entities/user/model/selectors.ts';
+import { skipToken } from '@reduxjs/toolkit/query';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector';
-import { getMessage, getUser } from '@entities/user/model/selectors.ts';
 
 export const useFetchUser = () => {
-  const user = useAppSelector(getUser);
   const messages = useAppSelector(getMessage);
+  const { session } = useAuth();
 
-  return { user, messages };
+  const userId = session?.user?.id;
+  const { data, isLoading, isError } = useGetUserInfoQuery(userId ? { userId } : skipToken);
+
+  return { messages, user: data, isLoading, isError };
 };

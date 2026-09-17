@@ -1,15 +1,15 @@
-import React, { useRef, useState } from 'react';
-import MediaItem from '@shared/ui/media-item/MediaItem.tsx';
-import classes from '@entities/user/ui/profile-item/ProfileItem.module.scss';
-import iconAvatar from '@shared/assets/images/human.webp';
-import Dropdown from '@shared/ui/dropdown/Dropdown.tsx';
-import IconBell from '@shared/assets/icons/bell.svg?react';
-import { useClickOutside } from '@shared/lib/hooks/ui/useClickOutside.ts';
 import type { ProfileItemProps } from '@entities/user/types.ts';
-import Button from '@shared/ui/button/Button';
+import classes from '@entities/user/ui/profile-item/ProfileItem.module.scss';
+import IconBell from '@shared/assets/icons/bell.svg?react';
+import iconAvatar from '@shared/assets/images/human.webp';
+import { useClickOutside } from '@shared/lib/hooks/ui/useClickOutside.ts';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
+import Button from '@shared/ui/button/Button';
+import Dropdown from '@shared/ui/dropdown/Dropdown.tsx';
+import MediaItem from '@shared/ui/media-item/MediaItem.tsx';
+import React, { useRef, useState } from 'react';
 
-const ProfileItem: React.FC<ProfileItemProps> = ({ user, messages, renderMessage, isActive, lang }) => {
+const ProfileItem: React.FC<ProfileItemProps> = ({ messages, user, renderMessage, isActive, lang }) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const refElement = useRef<HTMLDivElement | null>(null);
 
@@ -17,15 +17,18 @@ const ProfileItem: React.FC<ProfileItemProps> = ({ user, messages, renderMessage
 
   const toggleDropdown = () => setIsOpenDropdown((prev) => !prev);
 
+  const subscription = 'free';
+  const status = 'listener';
+
   const t = getTranslate(lang);
-  const subscriptionType = t.str[user.subscriptionType as keyof typeof t.str] || user.subscriptionType;
-  const statusType = t.str[user.statusUser as keyof typeof t.str] || user.statusUser;
+  const subscriptionType = t.str[subscription as keyof typeof t.str] || subscription;
+  const statusType = t.str[status as keyof typeof t.str] || status;
 
   return (
     <MediaItem
       className={classes.profileItem}
       classNameAvatar={classes.profileItemAvatar}
-      srcAvatar={user.avatar ? user.avatar : iconAvatar}
+      srcAvatar={user?.avatar ? user.avatar : iconAvatar}
       title={user?.username ?? ''}
       subtext={`${subscriptionType} ${statusType}`}
       refElement={refElement}

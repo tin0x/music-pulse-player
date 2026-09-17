@@ -5,7 +5,7 @@ import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-export const useRegisterForm = ({ setPreviewAvatar, setValue, setError }: UseRegisterFormArgs) => {
+export const useRegisterForm = ({ setPreviewAvatar, setValue, setError, clearErrors }: UseRegisterFormArgs) => {
   const [register, { isLoading }] = useRegisterMutation();
   const navigate = useNavigate();
 
@@ -25,6 +25,10 @@ export const useRegisterForm = ({ setPreviewAvatar, setValue, setError }: UseReg
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+
+    setPreviewAvatar(null);
+    setValue('avatar', undefined);
+    clearErrors('avatar');
 
     if (!file) return;
 

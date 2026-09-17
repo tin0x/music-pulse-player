@@ -1,9 +1,9 @@
+import useAuth from '@app/providers/auth/useAuth';
+import { useGetArtistByIdQuery } from '@entities/artist/api/artistApi.ts';
 import { useGetTrackByIdQuery } from '@entities/track/api/trackApi.ts';
+import { useGetUserInfoQuery } from '@entities/user';
 import { skipToken } from '@reduxjs/toolkit/query';
 import type { BackgroundSectionWidgetProps } from '@widgets/background-section-widget/types.ts';
-import { useGetArtistByIdQuery } from '@entities/artist/api/artistApi.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getUser } from '@entities/user/model/selectors.ts';
 
 export const useInitBackgroundSectionWidget = (
   idParam: BackgroundSectionWidgetProps['idParam'],
@@ -11,8 +11,9 @@ export const useInitBackgroundSectionWidget = (
 ) => {
   const trackQuery = useGetTrackByIdQuery(type === 'track' && idParam ? { id: idParam } : skipToken);
   const artistQuery = useGetArtistByIdQuery(type === 'artist' && idParam ? { id: idParam } : skipToken);
-
-  const coverProfile = useAppSelector(getUser)?.avatar;
+  const { session } = useAuth();
+  const userId = session?.user?.id;
+  const { data } = useGetUserInfoQuery(userId ? { userId } : skipToken);
 
   let backgroundUrl: string | undefined = '';
   let isLoading = false;
@@ -28,7 +29,7 @@ export const useInitBackgroundSectionWidget = (
   }
 
   if (type === 'profile') {
-    backgroundUrl = coverProfile || '';
+    backgroundUrl = data?.avatar || '';
     isLoading = false;
   }
 

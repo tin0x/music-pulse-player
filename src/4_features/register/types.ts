@@ -1,11 +1,12 @@
 import type { FormUser } from '@features/register/schemas/RegisterSchema';
 import type { Dispatch, SetStateAction } from 'react';
-import type { UseFormSetError, UseFormSetValue } from 'react-hook-form';
+import type { UseFormClearErrors, UseFormSetError, UseFormSetValue } from 'react-hook-form';
 
 export type UseRegisterFormArgs = {
   setError: UseFormSetError<FormUser>;
   setValue: UseFormSetValue<FormUser>;
   setPreviewAvatar: Dispatch<SetStateAction<string | null>>;
+  clearErrors: UseFormClearErrors<FormUser>;
   previewAvatar: string | null;
 };
 

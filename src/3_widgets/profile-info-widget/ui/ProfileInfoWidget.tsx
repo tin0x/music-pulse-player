@@ -11,6 +11,9 @@ import React from 'react';
 const ProfileInfoWidget: React.FC = () => {
   const {
     currentUser,
+    isLoading,
+    isError,
+    email,
     quantityTracks,
     quantityArtists,
     message,
@@ -23,7 +26,11 @@ const ProfileInfoWidget: React.FC = () => {
     navigate,
   } = useInitProfileInfoWidget();
 
-  if (!currentUser) {
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
     return (
       <QueryPlaceholder
         lang={lang}
@@ -34,7 +41,10 @@ const ProfileInfoWidget: React.FC = () => {
     );
   }
 
-  const { avatar, username, email, statusUser, subscriptionType } = currentUser;
+  const username = currentUser?.username;
+  const avatar = currentUser?.avatar;
+  const statusUser = 'listener';
+  const subscriptionType = 'free';
 
   const t = getTranslate(lang);
 

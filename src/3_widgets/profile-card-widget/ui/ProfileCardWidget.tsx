@@ -7,11 +7,11 @@ import React from 'react';
 
 const ProfileCardWidget: React.FC<ProfileCardWidgetProps> = ({ renderMessage }) => {
   const { isPath, lang } = useInitProfileCardWidget();
-  const { user, messages } = useFetchUser();
+  const { messages, user, isError } = useFetchUser();
 
   const reversedMessages = [...messages].reverse();
 
-  if (!user) {
+  if (!messages || isError) {
     return <QueryPlaceholder lang={lang} variant="empty" />;
   }
 

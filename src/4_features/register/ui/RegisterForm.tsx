@@ -7,7 +7,7 @@ import IconAvatar from '@shared/assets/icons/avatar.svg?react';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import Button from '@shared/ui/button/Button.tsx';
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const RegisterForm: React.FC = () => {
@@ -19,16 +19,22 @@ const RegisterForm: React.FC = () => {
     formState: { errors, isValid },
     setError,
     setValue,
+    clearErrors,
   } = useForm<FormUser>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: zodResolver(RegisterSchema),
   });
 
+  useEffect(() => {
+    register('avatar');
+  }, [register]);
+
   const { onSubmit, formError, handleFileChange } = useRegisterForm({
     setError,
     setPreviewAvatar,
     setValue,
+    clearErrors,
     previewAvatar,
   });
 
@@ -133,7 +139,8 @@ const RegisterForm: React.FC = () => {
             className={clsx(classes.registerFormInput)}
             type="file"
             id="file"
-            {...register('avatar', { onChange: handleFileChange })}
+            accept="image/*"
+            onChange={handleFileChange}
           />
         </div>
         <small
