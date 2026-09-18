@@ -19,7 +19,7 @@ const userApi = supabaseApi.injectEndpoints({
           data,
         };
       },
-      providesTags: (result) => (result ? [{ type: 'User', id: result.id }] : []),
+      providesTags: (_result, _error, { userId }) => [{ type: 'User', id: userId }],
     }),
   }),
 });
