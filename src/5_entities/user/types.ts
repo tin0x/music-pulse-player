@@ -58,11 +58,3 @@ export type ProfileItemProps = {
   isActive: boolean;
   lang: 'en' | 'ua';
 };
-
-export type ButtonProfileProps = {
-  children: React.ReactNode;
-  ariaLabel: string;
-  lang: string;
-  isDisabled?: boolean;
-  onClick: () => void;
-};

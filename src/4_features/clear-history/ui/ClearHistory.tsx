@@ -1,15 +1,15 @@
-import React from 'react';
 import { useClearHistory } from '@features/clear-history/model/useClearHistory.ts';
 import type { ClearHistoryProps } from '@features/clear-history/types.ts';
-import { ButtonProfile } from '@entities/user';
+import Button from '@shared/ui/button/Button';
+import React from 'react';
 
 const ClearHistory: React.FC<ClearHistoryProps> = ({ type, children }) => {
   const { handleClearHistory, isEmpty } = useClearHistory(type);
 
   return (
-    <ButtonProfile onClick={handleClearHistory} isDisabled={isEmpty} ariaLabel={`clear history ${type}`} lang="en">
+    <Button onClick={handleClearHistory} disabled={isEmpty} ariaLabel={`clear history ${type}`} lang="en">
       {children}
-    </ButtonProfile>
+    </Button>
   );
 };
 

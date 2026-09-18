@@ -1,5 +1,5 @@
-import { ButtonProfile } from '@entities/user';
 import { ChangeAvatar } from '@features/change-avatar';
+import { Logout } from '@features/logout';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import Avatar from '@shared/ui/avatar/Avatar.tsx';
 import Popup from '@shared/ui/popup/Popup.tsx';
@@ -74,9 +74,9 @@ const ProfileInfoWidget: React.FC = () => {
       <div className={classes.profileInfoBottomSection}>
         <div className={classes.profileInfoButtons}>
           <ChangeAvatar>{t.str.buttonChangeAvatarProfile}</ChangeAvatar>
-          <ButtonProfile onClick={handleOpenModal} ariaLabel="logout" lang="en">
+          <Logout onClick={handleOpenModal} ariaLabel="logout" lang="en">
             {t.str.buttonLogoutProfile}
-          </ButtonProfile>
+          </Logout>
         </div>
         <ul className={classes.profileInfoList}>
           <li className={classes.profileInfoItem}>
