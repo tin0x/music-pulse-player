@@ -1,0 +1,23 @@
+.changeAvatar {
+  &Button {
+    display: block;
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    color: var(--color-text-primary);
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-image: var(--color-bg-gradient);
+    transition: transform 0.2s linear;
+
+    &:hover {
+      transform: scale(0.97);
+    }
+  }
+
+  &Input {
+    display: none;
+  }
+}

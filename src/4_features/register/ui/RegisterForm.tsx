@@ -9,6 +9,7 @@ import Button from '@shared/ui/button/Button.tsx';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const RegisterForm: React.FC = () => {
   const [previewAvatar, setPreviewAvatar] = useState<string | null>(null);
@@ -44,7 +45,7 @@ const RegisterForm: React.FC = () => {
   return (
     <form className={classes.registerForm} onSubmit={handleSubmit(onSubmit)}>
       <fieldset className={classes.registerFormBlock}>
-        <h1 className={classes.registerFormTitle}>{t.str.titleForm}</h1>
+        <h1 className={classes.registerFormTitle}>{t.str.titleFormRegister}</h1>
 
         <label className={classes.registerFormLabel} htmlFor="username">
           {t.str.usernameForm}
@@ -155,6 +156,11 @@ const RegisterForm: React.FC = () => {
       <Button className={classes.registerFormButton} disabled={!isValid} type="submit">
         {t.str.buttonRegisterForm}
       </Button>
+
+      <p className={classes.registerFormTextLink}>
+        <span>Already have an account?</span>
+        <Link to="/login">Log in</Link>
+      </p>
     </form>
   );
 };

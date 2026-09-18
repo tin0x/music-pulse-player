@@ -15,6 +15,7 @@
 
   &Label {
     margin-bottom: 0.5rem;
+    font-size: 1.1rem;
     color: var(--color-text-secondary);
     font-weight: 700;
 
@@ -30,6 +31,7 @@
   &Input {
     color: var(--color-text-primary);
     padding: 1rem;
+    font-size: 1.1rem;
     border: 1px solid transparent;
     border-radius: var(--radius-md);
 
@@ -58,6 +60,18 @@
     }
   }
 
+  &TextLink {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+    margin-top: 1rem;
+
+    a {
+      color: var(--color-accent);
+    }
+  }
+
   &FileWrapper {
     margin-top: 1rem;
     width: 150px;
@@ -80,7 +94,7 @@
     margin-top: 1rem;
     background-image: var(--color-bg-gradient);
     color: var(--color-text-primary);
-    padding: 1.2rem 0;
+    padding: 1rem 0;
     border-radius: var(--radius-md);
     transition: transform 0.2s ease;
 

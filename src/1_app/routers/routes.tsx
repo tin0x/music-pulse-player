@@ -73,12 +73,12 @@ const routes = createBrowserRouter([
         element: <PublicOnlyRoute />,
         children: [
           {
-            path: '/register',
-            element: <RegisterPage />,
-          },
-          {
             path: '/login',
             element: <LoginPage />,
+          },
+          {
+            path: '/register',
+            element: <RegisterPage />,
           },
         ],
       },

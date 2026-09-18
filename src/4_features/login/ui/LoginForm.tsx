@@ -7,6 +7,7 @@ import { getTranslate } from '@shared/lib/utils/ui/getTranslate';
 import Button from '@shared/ui/button/Button';
 import clsx from 'clsx';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const {
@@ -28,7 +29,7 @@ const LoginForm = () => {
   return (
     <form className={classes.loginForm} onSubmit={handleSubmit(onSubmit)}>
       <fieldset className={classes.loginFormBlock}>
-        <h1 className={classes.loginFormTitle}>{t.str.titleForm}</h1>
+        <h1 className={classes.loginFormTitle}>{t.str.titleFormLogin}</h1>
 
         <div className={classes.loginFormInputs}>
           <div className={classes.loginFormInputBlock}>
@@ -68,10 +69,13 @@ const LoginForm = () => {
           </small>
         </div>
       </fieldset>
-
       <Button className={classes.loginFormButton} disabled={!isValid || isLoading} type="submit">
         {t.str.buttonLoginForm}
       </Button>
+      <p className={classes.loginFormTextLink}>
+        <span>Don't have an account?</span>
+        <Link to="/register">Register</Link>
+      </p>{' '}
     </form>
   );
 };

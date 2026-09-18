@@ -1,5 +1,5 @@
-import { ChangeAvatar } from '@features/change-avatar';
 import { Logout } from '@features/logout';
+import { ChangeAvatar } from '@features/update-user-info';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import Avatar from '@shared/ui/avatar/Avatar.tsx';
 import Popup from '@shared/ui/popup/Popup.tsx';
