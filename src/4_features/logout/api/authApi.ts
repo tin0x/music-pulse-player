@@ -21,3 +21,4 @@ const authApi = supabaseApi.injectEndpoints({
 });
 
 export const { useLogoutMutation } = authApi;
+export default authApi;
