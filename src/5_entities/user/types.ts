@@ -56,5 +56,6 @@ export type ProfileItemProps = {
   messages: UserMessage[];
   renderMessage?: (m: UserMessage) => React.ReactNode;
   isActive: boolean;
+  isLoading?: boolean;
   lang: 'en' | 'ua';
 };

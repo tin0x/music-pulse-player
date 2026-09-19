@@ -7,7 +7,7 @@ import React from 'react';
 
 const ProfileCardWidget: React.FC<ProfileCardWidgetProps> = ({ renderMessage }) => {
   const { isPath, lang } = useInitProfileCardWidget();
-  const { messages, user, isError } = useFetchUser();
+  const { messages, user, isLoading, isError } = useFetchUser();
 
   const reversedMessages = [...messages].reverse();
 
@@ -16,7 +16,14 @@ const ProfileCardWidget: React.FC<ProfileCardWidgetProps> = ({ renderMessage }) 
   }
 
   return (
-    <ProfileItem user={user} messages={reversedMessages} renderMessage={renderMessage} isActive={isPath} lang={lang} />
+    <ProfileItem
+      user={user}
+      messages={reversedMessages}
+      renderMessage={renderMessage}
+      isLoading={isLoading}
+      isActive={isPath}
+      lang={lang}
+    />
   );
 };
 

@@ -1,6 +1,6 @@
-@import '@app/styles/reset.css';
-@import '@shared/styles/fonts.css';
-@import '@shared/styles/variables.css';
+@import './reset.css';
+@import './fonts.css';
+@import './variables.css';
 @import 'react-loading-skeleton/dist/skeleton.css';
 
 html,

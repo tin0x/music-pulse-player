@@ -13,5 +13,6 @@ export type LogoutProps = {
   ariaLabel: string;
   lang: string;
   isDisabled?: boolean;
+  isLoading?: boolean;
   onClick: () => void;
 };

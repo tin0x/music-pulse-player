@@ -7,5 +7,6 @@ export type AvatarProps = {
   isThisPlayingTrack?: boolean;
   isPlaying?: boolean;
   isBuffering?: boolean;
+  isSourceLoading?: boolean;
   pathTo?: string;
 };

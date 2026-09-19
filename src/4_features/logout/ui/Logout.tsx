@@ -1,15 +1,12 @@
-import useLogout from '@features/logout/model/useLogout';
 import type { LogoutProps } from '@features/logout/types';
 import classes from '@features/logout/ui/Logout.module.scss';
 import Button from '@shared/ui/button/Button';
 
-const Logout: React.FC<LogoutProps> = ({ children, ariaLabel, lang, isDisabled }) => {
-  const { isLoading, handleLogout } = useLogout();
-
+const Logout: React.FC<LogoutProps> = ({ children, onClick, ariaLabel, lang, isLoading, isDisabled }) => {
   return (
     <Button
       className={classes.logout}
-      onClick={handleLogout}
+      onClick={onClick}
       disabled={isDisabled || isLoading}
       ariaLabel={ariaLabel}
       lang={lang}

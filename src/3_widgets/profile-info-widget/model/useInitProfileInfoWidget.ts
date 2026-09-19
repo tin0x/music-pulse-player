@@ -1,13 +1,10 @@
 import useAuth from '@app/providers/auth/useAuth';
 import useLanguage from '@app/providers/language/useLanguage';
-import { clearPlayer } from '@entities/player/model/playerSlice.ts';
 import { getFavoriteList } from '@entities/player/model/selectors.ts';
 import { useGetUserInfoQuery } from '@entities/user';
 import { skipToken } from '@reduxjs/toolkit/query';
-import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch.ts';
 import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export const useInitProfileInfoWidget = () => {
   const { session } = useAuth();
@@ -16,8 +13,6 @@ export const useInitProfileInfoWidget = () => {
   const { data, isLoading, isError } = useGetUserInfoQuery(userId ? { userId } : skipToken);
 
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const { currentLanguage } = useLanguage();
 
@@ -28,12 +23,6 @@ export const useInitProfileInfoWidget = () => {
 
   const handleOpenModal = () => setIsOpen(true);
   const handleCloseModal = () => setIsOpen(false);
-
-  const handleLogout = () => {
-    dispatch(clearPlayer());
-    setIsOpen(false);
-    navigate('/', { replace: true });
-  };
 
   const message =
     currentLanguage === 'en'
@@ -46,7 +35,7 @@ export const useInitProfileInfoWidget = () => {
 
   return {
     currentUser: data,
-    isLoading,
+    isLoadingUserInfo: isLoading,
     isError,
     email,
     quantityTracks,
@@ -57,7 +46,5 @@ export const useInitProfileInfoWidget = () => {
     lang: currentLanguage,
     handleOpenModal,
     handleCloseModal,
-    handleLogout,
-    navigate,
   };
 };

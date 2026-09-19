@@ -9,7 +9,7 @@ import Dropdown from '@shared/ui/dropdown/Dropdown.tsx';
 import MediaItem from '@shared/ui/media-item/MediaItem.tsx';
 import React, { useRef, useState } from 'react';
 
-const ProfileItem: React.FC<ProfileItemProps> = ({ messages, user, renderMessage, isActive, lang }) => {
+const ProfileItem: React.FC<ProfileItemProps> = ({ messages, user, isLoading, renderMessage, isActive, lang }) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const refElement = useRef<HTMLDivElement | null>(null);
 
@@ -35,6 +35,7 @@ const ProfileItem: React.FC<ProfileItemProps> = ({ messages, user, renderMessage
       pathTo="/profile"
       isBorder={isActive}
       alt="profile avatar"
+      isSourceLoading={isLoading}
       slots={{
         action: (
           <>

@@ -1,9 +1,8 @@
-import type { InitialState } from '@entities/user/types.ts';
-
 export type PopupProps = {
   className?: string;
   message: string;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
   onConfirm: () => void;
   onCancel: () => void;
+  isLoading: boolean;
 };

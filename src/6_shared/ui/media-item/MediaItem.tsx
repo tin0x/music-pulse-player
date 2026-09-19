@@ -1,8 +1,8 @@
-import React from 'react';
-import classes from '@shared/ui/media-item/MediaItem.module.scss';
 import Avatar from '@shared/ui/avatar/Avatar.tsx';
-import clsx from 'clsx';
+import classes from '@shared/ui/media-item/MediaItem.module.scss';
 import type { MediaItemProps } from '@shared/ui/media-item/types.ts';
+import clsx from 'clsx';
+import React from 'react';
 
 const MediaItem: React.FC<MediaItemProps> = ({
   className,
@@ -16,6 +16,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
   isBorder,
   pathTo,
   refElement,
+  isSourceLoading,
   slots,
 }) => {
   return (
@@ -31,6 +32,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
               type={duration || !subtext ? 'track' : 'user'}
               src={srcAvatar}
               isActive={isBorder}
+              isSourceLoading={isSourceLoading}
               pathTo={pathTo ? pathTo : ''}
             />
             <div className={classes.mediaItemDescription}>

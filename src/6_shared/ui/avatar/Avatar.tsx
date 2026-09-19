@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
+import imageHuman from '@shared/assets/images/human.webp';
+import imagePoster from '@shared/assets/images/сover-track.webp';
+import classes from '@shared/ui/avatar/Avatar.module.scss';
 import type { AvatarProps } from '@shared/ui/avatar/types.ts';
 import clsx from 'clsx';
-import classes from '@shared/ui/avatar/Avatar.module.scss';
-import imagePoster from '@shared/assets/images/сover-track.webp';
-import imageHuman from '@shared/assets/images/human.webp';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { Link } from 'react-router-dom';
 
 const Avatar: React.FC<AvatarProps> = React.memo(
-  ({ className, src, type, alt, isActive, isThisPlayingTrack, isPlaying, isBuffering, pathTo }) => {
+  ({ className, src, type, alt, isActive, isThisPlayingTrack, isPlaying, isSourceLoading, isBuffering, pathTo }) => {
     const [isError, setIsError] = useState(false);
-    const [isLoading, setIsLoading] = useState(!!src);
 
-    const sourceAvatar = src && src.trim() !== '' ? src : type === 'track' ? imagePoster : imageHuman;
+    const hasCustomSrc = Boolean(src && src.trim() !== '');
+    const [isImageLoading, setIsImageLoading] = useState(hasCustomSrc);
+
+    const showSkeleton = isSourceLoading || (hasCustomSrc && isImageLoading);
+
+    const sourceAvatar = hasCustomSrc ? src : type === 'track' ? imagePoster : imageHuman;
     const errorAvatar = type === 'track' ? imagePoster : imageHuman;
+
+    useEffect(() => {
+      setIsError(false);
+      setIsImageLoading(hasCustomSrc);
+    }, [src, hasCustomSrc]);
 
     const content = (
       <div
@@ -23,17 +32,20 @@ const Avatar: React.FC<AvatarProps> = React.memo(
         })}
         lang="en"
       >
-        {isLoading && (
+        {showSkeleton && (
           <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-hightlight)">
             <Skeleton circle width="100%" height="100%" />
           </SkeletonTheme>
         )}
         <img
           className={clsx(classes.avatarImage, {
-            [classes.avatarHidden]: isLoading,
+            [classes.avatarHidden]: showSkeleton,
           })}
-          onLoad={() => setIsLoading(false)}
-          onError={() => setIsError(true)}
+          onLoad={() => setIsImageLoading(false)}
+          onError={() => {
+            setIsError(true);
+            setIsImageLoading(false);
+          }}
           src={isError ? errorAvatar : sourceAvatar}
           alt={alt}
           lang="en"

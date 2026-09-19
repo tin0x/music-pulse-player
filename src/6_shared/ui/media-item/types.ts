@@ -5,6 +5,7 @@ export interface MediaItemProps {
   classNameAvatar?: string;
   index?: string;
   srcAvatar: string;
+  isSourceLoading?: boolean;
   alt: string;
   title: string;
   subtext?: string;
