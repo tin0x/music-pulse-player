@@ -1,27 +1,35 @@
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getFavoriteList } from '@entities/player/model/selectors.ts';
-import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch.ts';
-import { toggleFavorite } from '@entities/player/model/actions.ts';
+import useAuth from '@app/providers/auth/useAuth';
+import { useFetchFavoritesQuery } from '@entities/favorite';
+import type { ApiError } from '@entities/favorite/types';
+import { useAddFavoriteMutation, useRemoveFavoriteMutation } from '@features/toggle-favorite/api/favoriteApi';
 
-export const useToggleFavorite = (type: 'track' | 'artist', id: string | undefined) => {
-  const dispatch = useAppDispatch();
-  const favoriteList = useAppSelector(getFavoriteList);
+export const useToggleFavorite = (type: 'track' | 'artist', id: string) => {
+  const { data } = useFetchFavoritesQuery();
+  const [add, { isLoading: isAddLoading }] = useAddFavoriteMutation();
+  const [remove, { isLoading: isRemoveLoading }] = useRemoveFavoriteMutation();
+  const { session } = useAuth();
 
-  const handleToggleFavorite = () => {
-    if (type === 'artist') {
-      dispatch(toggleFavorite({ type: 'artist', id: id || '' }));
-      return;
-    }
+  const isFavorite = data?.[type === 'track' ? 'tracks' : 'artists'].includes(id) ?? false;
 
-    if (type === 'track') {
-      dispatch(toggleFavorite({ type: 'track', id: id || '' }));
+  const handleToggleFavorite = async () => {
+    const userId = session?.user?.id;
+
+    if (!userId) return;
+
+    const args = { entityType: type, entityId: id, userId };
+
+    try {
+      if (isFavorite) {
+        await remove(args).unwrap();
+      } else {
+        await add(args).unwrap();
+      }
+    } catch (error) {
+      const errorInfo = error as ApiError;
+
+      console.error(`${errorInfo.data.code}: ${errorInfo.data.message}`);
     }
   };
 
-  const isFavoriteTrack = id ? favoriteList.tracks.includes(id) : false;
-  const isFavoriteArtist = id ? favoriteList?.artists?.includes(id) : false;
-
-  const isFavorite = type === 'track' ? isFavoriteTrack : isFavoriteArtist;
-
-  return { isFavorite, handleToggleFavorite };
+  return { isFavorite, isLoading: isAddLoading || isRemoveLoading, handleToggleFavorite };
 };

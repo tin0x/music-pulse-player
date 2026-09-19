@@ -1,5 +1,4 @@
 import React, { type SVGProps } from 'react';
-import type { InitialState } from '@entities/user/types.ts';
 
 export type QueryPlaceholderType = 'queryError' | 'clientError' | 'empty' | 'globalError';
 
@@ -9,7 +8,7 @@ export type QueryPlaceholderProps = {
   alternativeMessage?: string;
   onClick?: () => void;
   onClickAlternative?: () => void;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };
 
 export type QueryPlaceholderFields = {

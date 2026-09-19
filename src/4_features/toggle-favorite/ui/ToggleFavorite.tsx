@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import React from 'react';
 
 const ToggleFavorite: React.FC<ToggleFavoriteProps> = ({ type, id, variantButton }) => {
-  const { isFavorite, handleToggleFavorite } = useToggleFavorite(type, id);
+  const { isFavorite, isLoading, handleToggleFavorite } = useToggleFavorite(type, id);
   const { currentLanguage } = useLanguage();
   const t = getTranslate(currentLanguage);
 
@@ -23,6 +23,7 @@ const ToggleFavorite: React.FC<ToggleFavoriteProps> = ({ type, id, variantButton
         })}
         onClick={handleToggleFavorite}
         aria-label="toggle favorite"
+        disabled={isLoading}
       >
         <IconHeart aria-hidden />
       </Button>
