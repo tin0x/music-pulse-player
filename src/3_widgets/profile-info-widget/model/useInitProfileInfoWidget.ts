@@ -1,25 +1,27 @@
 import useAuth from '@app/providers/auth/useAuth';
 import useLanguage from '@app/providers/language/useLanguage';
-import { getFavoriteList } from '@entities/player/model/selectors.ts';
+import { useFetchFavoritesQuery } from '@entities/favorite';
 import { useGetUserInfoQuery } from '@entities/user';
 import { skipToken } from '@reduxjs/toolkit/query';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
 import { useState } from 'react';
 
 export const useInitProfileInfoWidget = () => {
   const { session } = useAuth();
   const userId = session?.user?.id;
   const email = session?.user?.email;
-  const { data, isLoading, isError } = useGetUserInfoQuery(userId ? { userId } : skipToken);
+  const {
+    data: userInfo,
+    isLoading: isUserLoading,
+    isError: isUserError,
+  } = useGetUserInfoQuery(userId ? { userId } : skipToken);
+  const { data: favorite, isLoading: isFavoriteLoading, isError: isFavoriteError } = useFetchFavoritesQuery();
 
   const [isOpen, setIsOpen] = useState(false);
 
   const { currentLanguage } = useLanguage();
 
-  const { tracks, artists } = useAppSelector(getFavoriteList);
-
-  const quantityTracks = tracks.length;
-  const quantityArtists = artists.length;
+  const quantityTracks = favorite?.tracks.length;
+  const quantityArtists = favorite?.artists.length;
 
   const handleOpenModal = () => setIsOpen(true);
   const handleCloseModal = () => setIsOpen(false);
@@ -34,9 +36,9 @@ export const useInitProfileInfoWidget = () => {
       : 'Немає доступу до облікового запису, будь ласка, увійдіть!';
 
   return {
-    currentUser: data,
-    isLoadingUserInfo: isLoading,
-    isError,
+    currentUser: userInfo,
+    isLoadingProfile: isUserLoading || isFavoriteLoading,
+    isError: isUserError || isFavoriteError,
     email,
     quantityTracks,
     quantityArtists,

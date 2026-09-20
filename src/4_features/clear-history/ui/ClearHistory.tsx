@@ -2,21 +2,37 @@ import { useClearHistory } from '@features/clear-history/model/useClearHistory.t
 import type { ClearHistoryProps } from '@features/clear-history/types.ts';
 import classes from '@features/clear-history/ui/ClearHistory.module.scss';
 import Button from '@shared/ui/button/Button';
-import React from 'react';
+import Popup from '@shared/ui/popup/Popup';
+import React, { useState } from 'react';
 
 const ClearHistory: React.FC<ClearHistoryProps> = ({ type, children }) => {
-  const { handleClearHistory, isLoading, isEmpty, isError } = useClearHistory(type);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const { handleClearHistory, message, currentLanguage, isLoading, isEmpty, isError } = useClearHistory(type);
 
   return (
-    <Button
-      className={classes.clearHistoryButton}
-      onClick={handleClearHistory}
-      disabled={isLoading || isEmpty || isError}
-      ariaLabel={`clear history ${type}`}
-      lang="en"
-    >
-      {children}
-    </Button>
+    <>
+      <Button
+        className={classes.clearHistoryButton}
+        onClick={() => setIsOpenModal(true)}
+        disabled={isLoading || isEmpty || isError}
+        ariaLabel={`clear history ${type}`}
+        lang="en"
+      >
+        {children}
+      </Button>
+      {isOpenModal && (
+        <Popup
+          onConfirm={() => {
+            handleClearHistory();
+            setIsOpenModal(false);
+          }}
+          onCancel={() => setIsOpenModal(false)}
+          message={message}
+          isLoading={isLoading}
+          lang={currentLanguage}
+        />
+      )}
+    </>
   );
 };
 

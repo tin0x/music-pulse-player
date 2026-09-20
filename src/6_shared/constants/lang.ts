@@ -107,6 +107,8 @@ export const translations = {
       ok: 'Ok',
       cancel: 'Cancel',
       messageTitleLang: 'Language Change',
+      artists: 'artists',
+      tracks: 'tracks',
     },
     func: {
       messageTextHistory: (type: 'artists' | 'tracks') => `Cleared favorite ${type} history`,
@@ -222,6 +224,8 @@ export const translations = {
       resultTypeArtist: 'артист',
       messageTitleHistory: 'Очищення Історії',
       messageTitleLang: 'Мову Змінено',
+      artists: 'артистів',
+      tracks: 'треків',
     },
     func: {
       messageTextHistory: (type: 'artists' | 'tracks') =>

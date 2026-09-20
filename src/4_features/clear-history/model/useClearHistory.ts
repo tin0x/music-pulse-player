@@ -41,5 +41,10 @@ export const useClearHistory = (type: 'artists' | 'tracks') => {
     }
   };
 
-  return { handleClearHistory, isLoading: isFetching || isClearLoading, isEmpty, isError };
+  const message =
+    currentLanguage === 'en'
+      ? `Are you sure you want to remove all ${type} from your favorites list ?`
+      : `Ви впевнені, що хочете видалити всіх ${t.str[type]} зі списку вподобань?`;
+
+  return { handleClearHistory, message, currentLanguage, isLoading: isFetching || isClearLoading, isEmpty, isError };
 };

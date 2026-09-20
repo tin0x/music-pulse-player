@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 const ProfileInfoWidget: React.FC = () => {
   const {
     currentUser,
-    isLoadingUserInfo,
+    isLoadingProfile,
     isError,
     email,
     quantityTracks,
@@ -29,7 +29,7 @@ const ProfileInfoWidget: React.FC = () => {
   const navigate = useNavigate();
   const { handleLogout, isLoading } = useLogout();
 
-  if (isLoadingUserInfo) {
+  if (isLoadingProfile) {
     return <p>Loading...</p>;
   }
 
