@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export const useToggleAppHistory = () => {
-  useLocation(); // trigger for the renderer
+  useLocation();
   const navigate = useNavigate();
 
   const history = window.history;

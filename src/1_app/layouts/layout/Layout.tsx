@@ -51,7 +51,7 @@ const Layout: React.FC = () => {
     <div className={classes.layout} data-header-open={isHeaderOpen} data-aside-open={isAsideOpen}>
       <HeaderWidget className={classes.layoutHeaderWidget} isOpen={isHeaderOpen}>
         <LogoContainer className={classes.layoutLogoContainer}>
-          <Logo Icon={IconLogo} text="Music Pulse" pathTo="/dashboard" />
+          <Logo Icon={IconLogo} text="Music Pulse" pathTo="/" />
           <HistoryControls className={classes.layoutHistoryControls} />
           <Button className={classes.layoutButtonClose} onClick={() => setIsHeaderOpen(false)}>
             <IconClose />

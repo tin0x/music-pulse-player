@@ -73,10 +73,6 @@ export type InitialState = {
   currentTime: number;
   duration: number;
   recentlyPlayedTracks: string[];
-  favoriteList: {
-    tracks: string[];
-    artists: string[];
-  };
   context: TrendingContext | RecentlyContext | AlbumContext | ArtistContext | FavoriteContext | TargetContext | null;
 };
 

@@ -13,10 +13,6 @@ const initialState: InitialState = {
   currentTime: 0,
   duration: 0,
   recentlyPlayedTracks: [],
-  favoriteList: {
-    tracks: [],
-    artists: [],
-  },
   context: null,
 };
 
@@ -60,10 +56,14 @@ export const playerSlice = createSlice({
     setRecentlyPlayedTracks: (state, action) => {
       state.recentlyPlayedTracks = action.payload;
     },
-    updateFavoriteList: (state, action) => {
-      state.favoriteList = action.payload;
+    clearPlayer: (state) => {
+      const currentRecentlyPlayedTracks = state.recentlyPlayedTracks;
+
+      return {
+        ...initialState,
+        recentlyPlayedTracks: currentRecentlyPlayedTracks,
+      };
     },
-    clearPlayer: () => initialState,
   },
 });
 
@@ -79,6 +79,5 @@ export const {
   updateVolume,
   setDuration,
   setRecentlyPlayedTracks,
-  updateFavoriteList,
   clearPlayer,
 } = playerSlice.actions;
