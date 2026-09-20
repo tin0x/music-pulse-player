@@ -5,13 +5,13 @@ import Button from '@shared/ui/button/Button';
 import React from 'react';
 
 const ClearHistory: React.FC<ClearHistoryProps> = ({ type, children }) => {
-  const { handleClearHistory, isEmpty } = useClearHistory(type);
+  const { handleClearHistory, isLoading, isEmpty, isError } = useClearHistory(type);
 
   return (
     <Button
       className={classes.clearHistoryButton}
       onClick={handleClearHistory}
-      disabled={isEmpty}
+      disabled={isLoading || isEmpty || isError}
       ariaLabel={`clear history ${type}`}
       lang="en"
     >

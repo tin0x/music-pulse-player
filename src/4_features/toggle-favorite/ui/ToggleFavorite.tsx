@@ -32,7 +32,12 @@ const ToggleFavorite: React.FC<ToggleFavoriteProps> = ({ type, id, variantButton
 
   if (variantButton === 'text') {
     return (
-      <Button className={clsx(classes.toggleFavorite)} onClick={handleToggleFavorite} aria-label="toggle favorite">
+      <Button
+        className={clsx(classes.toggleFavorite)}
+        onClick={handleToggleFavorite}
+        disabled={isLoading}
+        aria-label="toggle favorite"
+      >
         {isFavorite
           ? `${t.str.dropdownValueDeleteFavorite} ${entities}`
           : `${t.str.dropdownValueAddFavorite} ${entities}`}
