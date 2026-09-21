@@ -1,10 +1,17 @@
-import React, { useEffect } from 'react';
+import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch';
+import { addToast } from '@shared/lib/slices/toast/model/toastSlice';
+import { useEffect } from 'react';
 
 export const useCheckStatusOffline = () => {
-  const [isOffline, setIsOffline] = React.useState(!window.navigator.onLine);
+  const dispatch = useAppDispatch();
 
-  const goOnline = () => setIsOffline(false);
-  const goOffline = () => setIsOffline(true);
+  const goOnline = () => {
+    dispatch(addToast({ eventType: 'success', messageType: 'internet' }));
+  };
+
+  const goOffline = () => {
+    dispatch(addToast({ eventType: 'error', messageType: 'internet' }));
+  };
 
   useEffect(() => {
     window.addEventListener('online', goOnline);
@@ -14,7 +21,5 @@ export const useCheckStatusOffline = () => {
       window.removeEventListener('online', goOnline);
       window.removeEventListener('offline', goOffline);
     };
-  }, []);
-
-  return { isOffline };
+  });
 };

@@ -1,6 +1,9 @@
 .toast {
+  position: fixed;
   padding: 0.3rem;
   width: 100%;
+  top: 0;
+  left: 0;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-100%);
@@ -11,13 +14,21 @@
   display: flex;
   gap: 2rem;
   align-items: center;
-  background-color: rgba(235, 79, 49, 0.2);
+  z-index: 1000;
   backdrop-filter: blur(10px);
 
   &Active {
     transform: translateY(0);
     visibility: visible;
     opacity: 1;
+  }
+
+  &Success {
+    background-color: rgba(50, 218, 106, 0.2);
+  }
+
+  &Error {
+    background-color: rgba(235, 79, 49, 0.2);
   }
 
   &Icon {

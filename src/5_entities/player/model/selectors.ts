@@ -12,5 +12,4 @@ export const getCurrentTime = (state: RootState): InitialState['currentTime'] =>
 export const getDuration = (state: RootState): InitialState['duration'] => state.player.duration;
 export const getRecentlyPlayedTracks = (state: RootState): InitialState['recentlyPlayedTracks'] =>
   state.player.recentlyPlayedTracks;
-export const getFavoriteList = (state: RootState): InitialState['favoriteList'] => state.player.favoriteList;
 export const getContext = (state: RootState): InitialState['context'] => state.player.context;

@@ -16,11 +16,18 @@ export const useChangeAvatar = (fileInputRef: RefObject<HTMLInputElement | null>
     }
 
     const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      console.error('The avatar must be an image.');
+      return;
+    }
+
     const maxSize = 2 * 1024 * 1024;
 
-    if (!file) return;
-    if (!file.type.startsWith('image/')) return;
-    if (file.size > maxSize) return;
+    if (file.size > maxSize) {
+      console.error('The avatar size must not exceed 2 MB.');
+      return;
+    }
 
     const fileReader = new FileReader();
     fileReader.onloadend = async () => {

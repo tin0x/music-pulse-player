@@ -5,15 +5,6 @@
   position: relative;
   overflow: hidden;
 
-  &[data-offline='true'] {
-    --toast-height: 3rem;
-    --events-click: auto;
-  }
-
-  &[data-offline='false'] {
-    --events-click: none;
-  }
-
   &TopBar {
     display: none;
     justify-content: space-between;

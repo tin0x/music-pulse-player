@@ -5,12 +5,14 @@ import userReducer from '@entities/user/model/userSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { baseApi } from '@shared/api/baseApi.ts';
 import supabaseApi from '@shared/api/supabase/supabaseApi';
+import toastReducer from '@shared/lib/slices/toast/model/toastSlice';
 
 const rootReducer = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
   [supabaseApi.reducerPath]: supabaseApi.reducer,
   user: userReducer,
   player: playerReducer,
+  toast: toastReducer,
 });
 
 export const store = configureStore({

@@ -1,9 +1,8 @@
-import useLanguage from '@app/providers/language/useLanguage';
 import { HistoryControls } from '@features/toggle-app-history';
 import IconBurger from '@shared/assets/icons/burger.svg?react';
 import IconAside from '@shared/assets/icons/sidebar.svg?react';
+import Toast from '@shared/lib/slices/toast/ui/Toast';
 import Button from '@shared/ui/button/Button.tsx';
-import Toast from '@shared/ui/toast/Toast.tsx';
 import { useCheckStatusOffline } from '@widgets/main-widget/model/useCheckStatusOffline.ts';
 import type { MainWidgetProps } from '@widgets/main-widget/types.ts';
 import classes from '@widgets/main-widget/ui/MainWidget.module.scss';
@@ -17,12 +16,10 @@ const MainWidget: React.FC<MainWidgetProps> = ({
   handleToggleAside,
   children,
 }) => {
-  const { isOffline } = useCheckStatusOffline();
-
-  const { currentLanguage } = useLanguage();
+  useCheckStatusOffline();
 
   return (
-    <main className={classes.main} data-offline={isOffline}>
+    <main className={classes.main}>
       <div className={classes.mainTopBar}>
         <div className={classes.mainTopBarAuxiliaryUnit}>
           <Button
@@ -45,7 +42,7 @@ const MainWidget: React.FC<MainWidgetProps> = ({
         </div>
       </div>
       <div className={classes.mainToastWrapper}>
-        <Toast lang={currentLanguage} isActive={isOffline} type="internet" />
+        <Toast />
       </div>
       <div className={classes.mainScrollableContent}>{children}</div>
     </main>

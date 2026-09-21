@@ -1,33 +1,44 @@
 import { useGetArtistsByIdsQuery } from '@entities/artist/api/artistApi.ts';
-import { skipToken } from '@reduxjs/toolkit/query';
+import { useFetchFavoritesQuery } from '@entities/favorite';
+import { getCurrentTrackId, getIsBuffering, getIsPlaying } from '@entities/player/model/selectors.ts';
 import { useGetTracksByIdsQuery } from '@entities/track/api/trackApi.ts';
-import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
-import { getCurrentTrackId, getFavoriteList, getIsBuffering, getIsPlaying } from '@entities/player/model/selectors.ts';
-import { useCallback, useMemo } from 'react';
 import type { Track } from '@entities/track/types.ts';
 import { DurationChange } from '@features/duration-change';
 import { TogglePlayback } from '@features/player-controls';
+import { skipToken } from '@reduxjs/toolkit/query';
+import { useAppSelector } from '@shared/lib/hooks/redux/useAppSelector.ts';
+import { useCallback } from 'react';
+
+const EMPTY_IDS: string[] = [];
 
 export const useInitItemListWidget = (paramType: string) => {
-  const favoriteList = useAppSelector(getFavoriteList);
+  const {
+    data,
+    isLoading: isLoadingFavorites,
+    error: errorFavorites,
+    refetch: refetchFavorites,
+  } = useFetchFavoritesQuery();
 
-  const ids = paramType === 'tracks' ? favoriteList.tracks : favoriteList.artists;
+  const isTracks = paramType === 'tracks';
+  const ids = (isTracks ? data?.tracks : data?.artists) ?? EMPTY_IDS;
 
-  const responseArtists = useGetArtistsByIdsQuery(paramType === 'artists' && ids.length > 0 ? { ids } : skipToken);
-  const responseTracks = useGetTracksByIdsQuery(paramType === 'tracks' && ids.length > 0 ? { ids } : skipToken);
+  const responseArtists = useGetArtistsByIdsQuery(!isTracks && ids.length > 0 ? { ids } : skipToken);
+  const responseTracks = useGetTracksByIdsQuery(isTracks && ids.length > 0 ? { ids } : skipToken);
 
-  const array = useMemo(() => {
-    return paramType === 'tracks' ? responseTracks.data : responseArtists.data;
-  }, [paramType, responseArtists.data, responseTracks.data]);
+  const array = ids.length === 0 ? [] : isTracks ? responseTracks.data : responseArtists.data;
 
-  const isLoading = responseArtists.isLoading || responseTracks.isLoading;
-  const isError = !!(responseTracks.error || responseArtists.error);
-  const refetch = paramType === 'tracks' ? responseTracks.refetch : responseArtists.refetch;
+  const isLoading = isLoadingFavorites || responseArtists.isLoading || responseTracks.isLoading;
+  const isError = !!(errorFavorites || responseTracks.error || responseArtists.error);
+
+  const refetch = () => {
+    refetchFavorites();
+    if (isTracks) responseTracks.refetch();
+    else responseArtists.refetch();
+  };
 
   const isPlaying = useAppSelector(getIsPlaying);
   const isBuffering = useAppSelector(getIsBuffering);
   const currentTrackId = useAppSelector(getCurrentTrackId);
-  const { tracks } = useAppSelector(getFavoriteList);
 
   const renderAction = useCallback(
     (track: Track) => (
@@ -46,12 +57,12 @@ export const useInitItemListWidget = (paramType: string) => {
           type: 'favorite',
           params: {
             ids,
-            limit: tracks.length,
+            limit: ids.length,
           },
         }}
       />
     ),
-    [ids, tracks],
+    [ids],
   );
 
   const renderDurationChange = useCallback(
