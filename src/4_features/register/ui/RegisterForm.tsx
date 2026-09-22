@@ -158,8 +158,8 @@ const RegisterForm: React.FC = () => {
       </Button>
 
       <p className={classes.registerFormTextLink}>
-        <span>Already have an account?</span>
-        <Link to="/login">Log in</Link>
+        <span>{t.str.alreadyHaveAnAccount}</span>
+        <Link to="/login">{t.str.buttonLoginForm}</Link>
       </p>
     </form>
   );

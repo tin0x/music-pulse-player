@@ -73,8 +73,8 @@ const LoginForm = () => {
         {t.str.buttonLoginForm}
       </Button>
       <p className={classes.loginFormTextLink}>
-        <span>Don't have an account?</span>
-        <Link to="/register">Register</Link>
+        <span>{t.str.dontHaveAnAccount}</span>
+        <Link to="/register">{t.str.buttonRegisterForm}</Link>
       </p>{' '}
     </form>
   );

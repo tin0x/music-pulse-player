@@ -9,7 +9,8 @@ export const setupResetPlayerSettings = (startListening: AppStartListening) => {
 
     effect: (_, listenerApi) => {
       audio.pause();
-      audio.src = '';
+      audio.removeAttribute('src');
+      audio.load();
       listenerApi.dispatch(clearPlayer());
     },
   });
