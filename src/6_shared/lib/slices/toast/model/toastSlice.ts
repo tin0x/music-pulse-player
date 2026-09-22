@@ -1,9 +1,8 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { AddToastPayload, InitialState } from '@shared/lib/slices/toast/types';
+import type { InitialState, ShowToastPayload } from '@shared/lib/slices/toast/types';
 
 const initialState: InitialState = {
   eventType: 'success',
-  messageType: 'internet',
   isActive: false,
 };
 
@@ -11,11 +10,18 @@ const toastSlice = createSlice({
   name: 'toastSlice',
   initialState,
   reducers: {
-    addToast: (state, action: PayloadAction<AddToastPayload>) => {
-      const { eventType, messageType } = action.payload;
+    showToast: (state, action: PayloadAction<ShowToastPayload>) => {
+      const { eventType, messageType, customMessage } = action.payload;
       state.eventType = eventType;
-      state.messageType = messageType;
       state.isActive = true;
+
+      if (messageType) {
+        state.messageType = messageType;
+      }
+
+      if (customMessage) {
+        state.customMessage = customMessage;
+      }
     },
     hiddenToast: (state) => {
       state.isActive = false;
@@ -23,5 +29,5 @@ const toastSlice = createSlice({
   },
 });
 
-export const { addToast, hiddenToast } = toastSlice.actions;
+export const { showToast, hiddenToast } = toastSlice.actions;
 export default toastSlice.reducer;

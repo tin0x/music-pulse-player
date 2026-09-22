@@ -175,3 +175,9 @@ export type ButtonShuffleListProps = {
   modePlayer: InitialState['mode'];
   onClick: () => void;
 };
+
+export type ErrorMessagesKeys = 'en' | 'ua';
+export type ErrorMessagesFields = {
+  corruptedFile: string;
+  internet: string;
+};

@@ -4,44 +4,28 @@ import { ChangeAvatar } from '@features/update-user-info';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import Avatar from '@shared/ui/avatar/Avatar.tsx';
 import Popup from '@shared/ui/popup/Popup.tsx';
-import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import { useInitProfileInfoWidget } from '@widgets/profile-info-widget/model/useInitProfileInfoWidget.ts';
 import classes from '@widgets/profile-info-widget/ui/ProfileInfoWidget.module.scss';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ProfileInfoWidget: React.FC = () => {
   const {
     currentUser,
     isLoadingProfile,
-    isError,
     email,
     quantityTracks,
     quantityArtists,
     message,
-    messageForProfile,
     isOpen,
     lang,
     handleOpenModal,
     handleCloseModal,
   } = useInitProfileInfoWidget();
 
-  const navigate = useNavigate();
   const { handleLogout, isLoading } = useLogout();
 
   if (isLoadingProfile) {
     return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return (
-      <QueryPlaceholder
-        lang={lang}
-        variant="clientError"
-        alternativeMessage={messageForProfile}
-        onClick={() => navigate('/', { replace: true })}
-      />
-    );
   }
 
   const username = currentUser?.username;

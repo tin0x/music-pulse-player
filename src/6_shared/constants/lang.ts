@@ -111,7 +111,6 @@ export const translations = {
       tracks: 'tracks',
     },
     func: {
-      messageTextHistory: (type: 'artists' | 'tracks') => `Cleared favorite ${type} history`,
       messageTextLanguage: (type: 'en' | 'ua') =>
         `Language successfully changed to ${type === 'ua' ? 'Ukrainian' : 'English'}`,
     },

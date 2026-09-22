@@ -30,10 +30,6 @@ export const useInitProfileInfoWidget = () => {
     currentLanguage === 'en'
       ? 'Are you sure you want to log out of your account?'
       : 'Ви впевнені, що хочете вийти зі свого облікового запису?';
-  const messageForProfile =
-    currentLanguage === 'en'
-      ? 'There is no access to the account, please login!'
-      : 'Немає доступу до облікового запису, будь ласка, увійдіть!';
 
   return {
     currentUser: userInfo,
@@ -43,7 +39,6 @@ export const useInitProfileInfoWidget = () => {
     quantityTracks,
     quantityArtists,
     message,
-    messageForProfile,
     isOpen,
     lang: currentLanguage,
     handleOpenModal,

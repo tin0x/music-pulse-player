@@ -27,7 +27,7 @@ export const toastType: ToastType = {
         internet: 'Підключення до Інтернету відновлено.',
       },
       error: {
-        internet: 'Internet connection restored.',
+        internet: 'Немає підключення до Інтернету. Додаток працює в автономному режимі.',
       },
     },
   },

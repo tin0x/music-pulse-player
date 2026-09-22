@@ -13,18 +13,24 @@ const Toast: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const { currentLanguage } = useLanguage();
-  const { eventType, messageType, isActive } = useAppSelector(getToastState);
+  const { eventType, messageType, customMessage, isActive } = useAppSelector(getToastState);
 
   const Icon = toastType[currentLanguage].icons[eventType];
-  const message = toastType[currentLanguage].messages[eventType][messageType];
+  const message = customMessage
+    ? customMessage
+    : messageType
+      ? toastType[currentLanguage].messages[eventType][messageType]
+      : 'Unknown';
 
   useEffect(() => {
+    if (!isActive) return;
+
     const id = setTimeout(() => {
       dispatch(hiddenToast());
     }, 10000);
 
     return () => clearTimeout(id);
-  }, [isActive, dispatch]);
+  }, [isActive, eventType, customMessage, messageType, dispatch]);
 
   return createPortal(
     <div

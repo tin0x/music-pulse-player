@@ -1,16 +1,16 @@
 import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch';
-import { addToast } from '@shared/lib/slices/toast/model/toastSlice';
+import { showToast } from '@shared/lib/slices/toast/model/toastSlice';
 import { useEffect } from 'react';
 
 export const useCheckStatusOffline = () => {
   const dispatch = useAppDispatch();
 
   const goOnline = () => {
-    dispatch(addToast({ eventType: 'success', messageType: 'internet' }));
+    dispatch(showToast({ eventType: 'success', messageType: 'internet' }));
   };
 
   const goOffline = () => {
-    dispatch(addToast({ eventType: 'error', messageType: 'internet' }));
+    dispatch(showToast({ eventType: 'error', messageType: 'internet' }));
   };
 
   useEffect(() => {
