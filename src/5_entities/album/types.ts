@@ -1,5 +1,3 @@
-import type { InitialState } from '@entities/user/types.ts';
-
 export type TracksByGenreArgs = {
   genre:
     | 'House'
@@ -39,5 +37,5 @@ export type TracksByGenre = TrackByGenre[];
 
 export type GenreSliderProps = {
   className?: string;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };

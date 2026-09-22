@@ -1,7 +1,6 @@
 // SEARCH TRACKS
 
 import React from 'react';
-import type { InitialState } from '@entities/user/types.ts';
 
 export type TrackFromSearchResult = {
   trackId: number;
@@ -37,5 +36,5 @@ export type InputSearchProps = {
   response: (TrackFromSearchResult | ArtistFromSearchResult)[];
   actionSlot: React.ReactNode;
   isLoading: boolean;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };

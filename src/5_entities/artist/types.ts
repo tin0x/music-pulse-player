@@ -1,5 +1,4 @@
 import React from 'react';
-import type { InitialState } from '@entities/user/types.ts';
 
 export type ArtistTrack = {
   id: string;
@@ -48,7 +47,7 @@ export type ArtistItemProps = {
   artist: TopArtist;
   isLast?: boolean;
   artistIdParam: string;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
   renderActionToggleFavorite: (userId: string) => React.ReactNode;
 };
 
@@ -63,7 +62,7 @@ export type TracksByArtistIdArgs = {
 export type ArtistDescriptionProps = {
   artist: ArtistProfile;
   renderActionToggleFavorite: () => React.ReactNode;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };
 
 export type ButtonToggleFavoriteArtistProps = {
@@ -83,10 +82,10 @@ export type ArtistSliderProps = {
   className?: string;
   artists: ArtistProfile[];
   limitSlides?: number;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };
 
 export type ArtistsListProps = {
   artists: ArtistProfile[];
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };

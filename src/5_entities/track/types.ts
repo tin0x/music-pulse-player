@@ -1,7 +1,6 @@
 // DATA TYPES
 
 import React from 'react';
-import type { InitialState } from '@entities/user/types.ts';
 
 export type Track = {
   id: string;
@@ -60,7 +59,7 @@ export type TrackListProps = {
   currentPage?: number;
   tracksLimitPerPage?: number;
   limitTracks?: number;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };
 
 export type RecentlyPlayedListProps = {
@@ -68,7 +67,7 @@ export type RecentlyPlayedListProps = {
   actionSlot: (track: Track) => React.ReactNode;
   trackIdParam: string;
   isPlaying: boolean;
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
 };
 
 export type TrackDescriptionProps = {
@@ -87,6 +86,6 @@ export type TrackDescriptionProps = {
     favorite: number;
     release?: string | null;
   };
-  lang: InitialState['language'];
+  lang: 'en' | 'ua';
   renderActionToggleFavorite: (id?: string) => React.ReactNode;
 };
