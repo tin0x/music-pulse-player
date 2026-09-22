@@ -3,6 +3,7 @@ import useLanguage from '@app/providers/language/useLanguage';
 import { HistoryControls } from '@features/toggle-app-history';
 import IconClose from '@shared/assets/icons/close.svg?react';
 import IconLogo from '@shared/assets/icons/logo.svg?react';
+import useScrollToTop from '@shared/lib/hooks/ui/useScrollToTop';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
 import Button from '@shared/ui/button/Button.tsx';
 import Copyright from '@shared/ui/copyright/Copyright.tsx';
@@ -26,6 +27,8 @@ import { Outlet, useLocation } from 'react-router-dom';
 const Layout: React.FC = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState(() => window.innerWidth >= 1600);
   const [isAsideOpen, setIsAsideOpen] = useState(() => window.innerWidth >= 1600);
+
+  useScrollToTop();
 
   const { pathname } = useLocation();
 

@@ -1,0 +1,14 @@
+.globalLoader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &Circle {
+    width: 150px;
+    height: 150px;
+  }
+}

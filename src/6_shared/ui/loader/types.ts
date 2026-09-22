@@ -1,3 +1,3 @@
 export type LoaderProps = {
-  className: string;
+  className?: string;
 };

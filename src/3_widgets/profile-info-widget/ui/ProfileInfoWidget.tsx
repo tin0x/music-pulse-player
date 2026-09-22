@@ -2,8 +2,9 @@ import { Logout } from '@features/logout';
 import useLogout from '@features/logout/model/useLogout';
 import { ChangeAvatar } from '@features/update-user-info';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate.ts';
-import Avatar from '@shared/ui/avatar/Avatar.tsx';
-import Popup from '@shared/ui/popup/Popup.tsx';
+import Avatar from '@shared/ui/avatar/Avatar';
+import Popup from '@shared/ui/popup/Popup';
+import ProfileInfoSkeleton from '@shared/ui/skeletons/profile-info-skeleton/ProfileInfoSkeleton';
 import { useInitProfileInfoWidget } from '@widgets/profile-info-widget/model/useInitProfileInfoWidget.ts';
 import classes from '@widgets/profile-info-widget/ui/ProfileInfoWidget.module.scss';
 import React from 'react';
@@ -25,7 +26,7 @@ const ProfileInfoWidget: React.FC = () => {
   const { handleLogout, isLoading } = useLogout();
 
   if (isLoadingProfile) {
-    return <p>Loading...</p>;
+    return <ProfileInfoSkeleton />;
   }
 
   const username = currentUser?.username;
