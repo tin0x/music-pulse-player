@@ -40,7 +40,6 @@ The project strictly adheres to **Feature-Sliced Design (FSD)** architecture pri
     <img src="./screenshots/screenshot-4.webp" alt="Settings Page">
 </p>
 
-
 ---
 
 ## Key Features & Architectural Highlights
@@ -65,6 +64,7 @@ The project strictly adheres to **Feature-Sliced Design (FSD)** architecture pri
 The codebase relies strictly on a production-ready, ultra-modern tech stack:
 
 - **Core Runtime:** React 19 (Strict Mode active), TypeScript ~5.9, Vite 8+ (Native ESM Modules setup).
+- **Backend & Database Service:** Supabase Client `@supabase/supabase-js` 2.116 (Handles user authentication, session registration, and relational data management for user profiles, favorite artists, and tracks).
 - **State Architecture:** Redux Toolkit 2.11 (Slices, Selectors, Custom Action Listeners) paired with React Redux 9.2.
 - **Data Hydration:** RTK Query (Robust REST API async handling, automatic polling, and caching).
 - **Client Routing:** React Router DOM 7.13 (Protected routes, dynamic parameters, nested outlet layouts).
@@ -101,23 +101,31 @@ git clone https://github.com/tin0x/music-pulse-player.git
 
 ```bash
 cd music-pulse-player
-npm install
+pnpm install
 ```
 
-3. Fire up Vite local dev environment:
+3. Set up your environment variables (.env.local) with your Supabase:
 
-```bash
-npm run dev
+```
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PUBLIC_KEY=your-publishable-key
+VITE_MUSIC_API_BASE_URL=https://your-project.audiusApi.co
 ```
 
-4. Run strict static type checks and compile production-ready assets:
+4. Fire up Vite local dev environment:
 
 ```bash
-npm run build
+pnpm run dev
 ```
 
-5. Run ESLint validation checks to ensure strict architectural formatting guidelines:
+5. Run strict static type checks and compile production-ready assets:
 
 ```bash
-npm run lint
+pnpm run build
+```
+
+6. Run ESLint validation checks to ensure strict architectural formatting guidelines:
+
+```bash
+pnpm run lint
 ```
