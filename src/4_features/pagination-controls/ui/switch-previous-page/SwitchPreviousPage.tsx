@@ -1,13 +1,11 @@
-import React from 'react';
 import type { SwitchPreviousPageProps } from '@features/pagination-controls/types.ts';
-import Button from '@shared/ui/button/Button.tsx';
-import IconArrowPrev from '@shared/assets/icons/arrow-prev.svg?react';
 import classes from '@features/pagination-controls/ui/switch-previous-page/SwitchPreviousPage.module.scss';
+import IconArrowPrev from '@shared/assets/icons/arrow-prev.svg?react';
+import Button from '@shared/ui/button/Button.tsx';
 import clsx from 'clsx';
+import React from 'react';
 
 const SwitchPreviousPage: React.FC<SwitchPreviousPageProps> = ({ onPrev, isDisabled }) => {
-  // console.log(isDisabled)
-
   return (
     <Button
       className={clsx(classes.switchPreviousPage, {

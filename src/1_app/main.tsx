@@ -13,12 +13,12 @@ persistStore();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <LanguageProvider>
-      <AuthProvider>
-        <ReduxProvider>
+    <ReduxProvider>
+      <LanguageProvider>
+        <AuthProvider>
           <App />
-        </ReduxProvider>
-      </AuthProvider>
-    </LanguageProvider>
+        </AuthProvider>
+      </LanguageProvider>
+    </ReduxProvider>
   </StrictMode>,
 );

@@ -15,7 +15,7 @@ const useLogin = ({ setError }: UseLoginArgs) => {
         type: 'server',
         message: apiError.data.message,
       });
-      console.log(`Status: ${apiError.status}: ${apiError.data.code}`);
+      console.error(`Status: ${apiError.status}: ${apiError.data.code}`);
       return;
     }
   };

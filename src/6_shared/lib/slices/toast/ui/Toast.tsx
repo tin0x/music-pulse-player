@@ -27,7 +27,7 @@ const Toast: React.FC = () => {
 
     const id = setTimeout(() => {
       dispatch(hiddenToast());
-    }, 10000);
+    }, 8000);
 
     return () => clearTimeout(id);
   }, [isActive, eventType, customMessage, messageType, dispatch]);

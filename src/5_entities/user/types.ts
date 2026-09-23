@@ -44,7 +44,10 @@ export type MessageItemProps = {
 };
 
 export type UserPayload = Omit<UserInfo, 'subscriptionType' | 'statusUser'>;
-export type MessagePayload = UserMessage;
+export type AddMessagePayload = UserMessage;
+export type DeleteMessagePayload = {
+  itemId: string;
+};
 
 export type ProfileItemProps = {
   user?: {

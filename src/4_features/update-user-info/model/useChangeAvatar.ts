@@ -35,7 +35,7 @@ export const useChangeAvatar = (fileInputRef: RefObject<HTMLInputElement | null>
   const handleChangeAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!userId) {
       dispatch(showToast({ eventType: 'error', customMessage: errorMessages[currentLanguage].auth }));
-      console.error('No authenticated user found');
+      console.error(errorMessages[currentLanguage].auth);
       return;
     }
 
@@ -43,7 +43,7 @@ export const useChangeAvatar = (fileInputRef: RefObject<HTMLInputElement | null>
     if (!file) return;
     if (!file.type.startsWith('image/')) {
       dispatch(showToast({ eventType: 'error', customMessage: errorMessages[currentLanguage].fileType }));
-      console.error('The avatar must be an image.');
+      console.error(errorMessages[currentLanguage].fileType);
       return;
     }
 
@@ -51,7 +51,7 @@ export const useChangeAvatar = (fileInputRef: RefObject<HTMLInputElement | null>
 
     if (file.size > maxSize) {
       dispatch(showToast({ eventType: 'error', customMessage: errorMessages[currentLanguage].fileSize }));
-      console.error('The avatar size must not exceed 2 MB.');
+      console.error(errorMessages[currentLanguage].fileSize);
       return;
     }
 

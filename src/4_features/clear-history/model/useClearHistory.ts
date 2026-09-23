@@ -7,6 +7,11 @@ import { useAppDispatch } from '@shared/lib/hooks/redux/useAppDispatch.ts';
 import { showToast } from '@shared/lib/slices/toast/model/toastSlice';
 import { getTranslate } from '@shared/lib/utils/ui/getTranslate';
 
+const errorMessage = {
+  en: 'Failed to clear the favorites history, please try again.',
+  ua: 'Не вдалося очистити історію вибраного, будь ласка, спробуйте ще раз.',
+};
+
 export const useClearHistory = (type: 'artists' | 'tracks') => {
   const dispatch = useAppDispatch();
   const { data: favorites, isFetching, isError } = useFetchFavoritesQuery();
@@ -38,7 +43,7 @@ export const useClearHistory = (type: 'artists' | 'tracks') => {
       dispatch(showToast({ eventType: 'success', customMessage: renderMessage() }));
     } catch (error) {
       const errorInfo = error as ApiError;
-      dispatch(showToast({ eventType: 'error', customMessage: errorInfo.data.message }));
+      dispatch(showToast({ eventType: 'error', customMessage: errorMessage[currentLanguage] }));
       console.error(`${errorInfo.data.code} : ${errorInfo.data.message}`);
       return;
     }

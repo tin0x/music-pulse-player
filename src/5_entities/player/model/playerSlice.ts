@@ -1,5 +1,5 @@
-import type { InitialState } from '@entities/player/types.ts';
-import { createSlice } from '@reduxjs/toolkit';
+import type { InitialState, SetModePayload, SetTrackPayload } from '@entities/player/types.ts';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialState = {
   track: null,
@@ -20,10 +20,10 @@ export const playerSlice = createSlice({
   name: 'player',
   initialState,
   reducers: {
-    setTrack: (state, action) => {
+    setTrack: (state, action: PayloadAction<SetTrackPayload>) => {
       const { track, playerContext } = action.payload;
       state.track = track;
-      state.currentTrackId = track.id;
+      state.currentTrackId = track?.id ?? state.currentTrackId;
       state.isPlaying = true;
       state.isBuffering = true;
       state.context = playerContext;
@@ -32,28 +32,28 @@ export const playerSlice = createSlice({
     togglePlay: (state) => {
       state.isPlaying = !state.isPlaying;
     },
-    toggleIsEnded: (state, action) => {
+    toggleIsEnded: (state, action: PayloadAction<boolean>) => {
       state.isEnded = action.payload;
     },
-    setMode: (state, action) => {
+    setMode: (state, action: PayloadAction<SetModePayload>) => {
       state.mode = action.payload;
     },
-    setIsBuffering: (state, action) => {
+    setIsBuffering: (state, action: PayloadAction<boolean>) => {
       state.isBuffering = action.payload;
     },
     setMute: (state) => {
       state.isMuted = !state.isMuted;
     },
-    updateProgress: (state, action) => {
+    updateProgress: (state, action: PayloadAction<number>) => {
       state.currentTime = action.payload;
     },
-    updateVolume: (state, action) => {
+    updateVolume: (state, action: PayloadAction<number>) => {
       state.volume = action.payload;
     },
-    setDuration: (state, action) => {
+    setDuration: (state, action: PayloadAction<number>) => {
       state.duration = action.payload;
     },
-    setRecentlyPlayedTracks: (state, action) => {
+    setRecentlyPlayedTracks: (state, action: PayloadAction<string[]>) => {
       state.recentlyPlayedTracks = action.payload;
     },
     clearPlayer: (state) => {

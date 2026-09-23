@@ -181,3 +181,10 @@ export type ErrorMessagesFields = {
   corruptedFile: string;
   internet: string;
 };
+
+export type SetTrackPayload = {
+  track: InitialState['track'];
+  playerContext: InitialState['context'];
+};
+
+export type SetModePayload = 'repeat' | 'shuffle' | null;

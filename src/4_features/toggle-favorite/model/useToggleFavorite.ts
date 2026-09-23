@@ -26,8 +26,8 @@ export const useToggleFavorite = (type: 'track' | 'artist', id: string) => {
       }
     } catch (error) {
       const errorInfo = error as ApiError;
-
       console.error(`${errorInfo.data.code}: ${errorInfo.data.message}`);
+      return;
     }
   };
 
