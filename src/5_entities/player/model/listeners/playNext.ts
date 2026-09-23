@@ -20,7 +20,7 @@ export const setupPlayNext = (startListening: AppStartListening) => {
       const type = context?.type;
       const limit = context?.params?.limit;
 
-      if (!type) return;
+      if (!type || !track) return;
 
       let selectedTracks: Track[] = [];
 
